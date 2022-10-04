@@ -2,6 +2,7 @@ abstract class OptionalServices {
     private String serviceName;
     private float cost;
     private boolean isOrdered = false;
+    private boolean isCanceled = false;
 
     // constructor
     OptionalServices(String serviceName, float cost){
@@ -23,8 +24,8 @@ abstract class OptionalServices {
     // cancel order
     public void cancelOrder(){
         // validation if ordered then, we can cancel
-        if (isOrdered() == true){
-            this.isOrdered = false;
+        if (isCanceled() == false){
+            this.isOrdered = true;
             System.out.println("order is canceled");
         } else{ 
             System.out.println("not order yet");
@@ -42,5 +43,8 @@ abstract class OptionalServices {
     }
     public boolean isOrdered(){
         return this.isOrdered;
+    }
+    public boolean isCanceled(){
+        return this.isCanceled;
     }
 }

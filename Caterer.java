@@ -11,7 +11,7 @@ public class Caterer extends Employee {
     }
 
     // order foodmenu for an event
-    public void orderFoodMenu(Event event){
+    public void orderFoodMenu(Event event, int drink, int cutlery, float bill){
         // reset the booking status to original status 
         //before making booking for a new event
         this.isBooked = false;
@@ -20,9 +20,13 @@ public class Caterer extends Employee {
             setCurrentEventId(event);
             FoodMenu foodMenu = event.getFoodMenu();
             // book the foodmenu
-            setCurrentFoodMenu(foodMenu.getFoodMenu());
+            setCurrentFoodMenu(foodMenu.getMenu());
+            // set number of drink
+            foodMenu.orderDrink(drink);
+            // set number of cutlery
+            foodMenu.arrangeCutlery(cutlery);
             // add cost of food menu
-            setBill(foodMenu.getCost());
+            setBill(bill);
             // booking completed
             this.isBooked = true;       
             System.out.println("the food menu of event " + getCurrentEventId() + "is booked");
@@ -32,37 +36,49 @@ public class Caterer extends Employee {
     }
 
     // add new items in foodmenu
-    public void addFoodMenu(Event event, String newFood, float cost){
+    public void addFoodMenu(Event event, String newFood, float bill, float cost){
         if (getIsbooked() == true){
             // get foodmenu
             FoodMenu foodmenu= event.getFoodMenu();
             // add new item in food menu
-            foodmenu.addFood(newFood);
+            foodmenu.addFood(newFood, cost);
             // update new cost for foodmenu
-            foodmenu.setCost(cost);
+            setBill(bill);
             // print message
             System.out.println("new food is added for this event " + getCurrentEventId());
-            System.out.println(foodmenu.getFoodMenu());
+            System.out.println(foodmenu.getMenu());
         } else{
             System.out.println("the food menu of this event is not booked yet, Please book!! ");
         }    
     }
 
     // change food menu by postion
-    public void changeFoodMenu(Event event, String newFood, int oldFoodPosition, float cost){
+    public void changeFoodMenu(Event event, String newFood, int oldFoodPosition, float bill, float cost){
         if (getIsbooked() == true){
             // get food menu
             FoodMenu foodmenu= event.getFoodMenu();
             // change item in food menu
-            foodmenu.changeFood(newFood, oldFoodPosition);
+            foodmenu.changeFood(newFood, oldFoodPosition, cost );
             // update new cost for foodmenu
-            foodmenu.setCost(cost);
+            setBill(bill);
             // print message
             System.out.println("foodmenu is changed for this event "+ getCurrentEventId());
-            System.out.println(foodmenu.getFoodMenu());
+            System.out.println(foodmenu.getMenu());
         }else{
             System.out.println("the food menu of this event is not booked yet, Please book!! ");
         }     
+    }
+
+    // updated number of drink
+    public void updatedDinkOrder(int drink, Event event){
+        FoodMenu foodmenu = event.getFoodMenu();
+        foodmenu.orderDrink(drink);
+    }
+
+    // updated number of cutlery
+    public void updatedCutlery(int cutlery, Event event){
+        FoodMenu foodmenu = event.getFoodMenu();
+        foodmenu.arrangeCutlery(cutlery);
     }
 
     // getter

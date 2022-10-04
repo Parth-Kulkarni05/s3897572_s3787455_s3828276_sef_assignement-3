@@ -48,8 +48,9 @@ public class Event {
     }
 
         // optional service flower decoration
-    Event(String eventId, Date eventDateTime, 
-        int numberOfGuest,FoodMenu foodMenu, FlowerDecoration flower ){
+    Event(String eventId, Date eventDateTime, int numberOfGuest,
+            FoodMenu foodMenu, FlowerDecoration flower ){
+                
             // set the date time, event id, foodmenu, flower
         setDateTime(eventDateTime);
         setEventId(eventId);
@@ -62,8 +63,9 @@ public class Event {
     }
 
         // optional service flower decoration and music band
-    Event(String eventId, Date eventDateTime, 
-        int numberOfGuest, FoodMenu foodMenu, Music music, FlowerDecoration flower ){
+    Event(String eventId, Date eventDateTime, int numberOfGuest, FoodMenu foodMenu,
+             Music music, FlowerDecoration flower ){
+
         // set the date time, event id, foodmenu,music, flower
         setDateTime(eventDateTime);
         setEventId(eventId);
@@ -82,6 +84,16 @@ public class Event {
     public void changeAmount(float newCost){
         setCost(newCost);
         System.out.println("Cost is updated");     
+    }
+
+    // cancel event
+    public void cancel(){
+        this.isCanceled = true;
+    }
+
+    // check cancelation status
+    public boolean isCanceled(){
+        return this.isCanceled;
     }
 
     // getter, setter
@@ -110,7 +122,7 @@ public class Event {
         return this.foodMenu;
     }
 
-    private void setNumberOfGuest(int numberOfGuest){
+    public void setNumberOfGuest(int numberOfGuest){
         this.numberOfGuest = numberOfGuest;
     }
     public int getNumberOfGuest(){
@@ -125,7 +137,7 @@ public class Event {
         return this.eventId;
     }  
 
-    private void setDateTime(Date dateTime){
+    public void setDateTime(Date dateTime){
         this.eventDateTime = dateTime;
     }
     public Date getDateTime(){
@@ -135,12 +147,15 @@ public class Event {
     public void isPaid(){
         System.out.println(isPaid);
     }
-    private void setCost(float cost){
+    public void setCost(float cost){
         this.cost = cost;
     }
     public float getCost(){
         return this.cost;
     }
+    
+   
+   
 
     
 }

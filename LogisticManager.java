@@ -11,26 +11,72 @@ public class LogisticManager extends Employee{
     }
 
     // method
-    public void hireMusic(Event event){
+
+    // hire music
+    public void hireMusic(Event event, float bill){
         // reset the booking status to original status 
         //before making booking for a new event
         this.isBooked = false;
         if (getIsbooked() == false){
+           
             // set the current event caterer is workin on
             setCurrentEventId(event);
-            Music music= event.getOp();
-            // book the foodmenu
-            setCurrentFoodMenu(foodMenu.getFoodMenu());
+            Music music= event.getMusic();
+            // hire music 
+            this.currentOptionalServiceName = music.getServiceName();
             // add cost of food menu
-            setBill(foodMenu.getCost());
+            setBill(bill);
             // booking completed
             this.isBooked = true;       
-            System.out.println("the food menu of event " + getCurrentEventId() + "is booked");
+            System.out.println( this.currentOptionalServiceName +" of "+ getCurrentEventId() + "is booked");
         } else{
-            System.out.println("the food menu of this event is not booked yet, Please book!! ");
+            System.out.println("music service of this event is not booked yet, Please book!! ");
         }    
     }
 
+    
+    // flower arrangement
+    public void orderFlowerDecoration(Event event, float bill){
+        // reset the booking status to original status 
+        //before making booking for a new event
+        this.isBooked = false;
+        if (getIsbooked() == false){
+           
+            // set the current event caterer is workin on
+            setCurrentEventId(event);
+            FlowerDecoration flower = event.getFlowerDecoration();
+            // hire music 
+            this.currentOptionalServiceName = flower.getServiceName();
+            // add cost of food menu
+            setBill(bill);
+            // booking completed
+            this.isBooked = true;       
+            System.out.println( this.currentOptionalServiceName +" of "+ getCurrentEventId() + "is booked");
+        } else{
+            System.out.println("flower decoration service of this event is not booked yet, Please book!! ");
+        }    
+    }
+
+    // cancel service
+    public void cancel(Event event, String optionalServiceName){
+        // already booked, then can cancel
+        if (getIsbooked() == true){
+            setCurrentEventId(event);
+            // flower arrangement
+            if(optionalServiceName == event.getFlowerDecoration().getServiceName()){
+                event.getFlowerDecoration().cancelOrder();
+                System.out.println(optionalServiceName + "is canceled for the event" + event.getEventId());
+            }
+            //music
+            if(optionalServiceName == event.getMusic().getServiceName()){
+                event.getMusic().cancelOrder();
+                System.out.println(optionalServiceName + "is canceled for the event" + event.getEventId());
+           } 
+        } // hasnot booked, cannot cancel
+        else{
+            System.out.println("Optional Services of this event have not been booked. Please book!");
+            }
+    }
 
     // getter
     public boolean getIsbooked(){
