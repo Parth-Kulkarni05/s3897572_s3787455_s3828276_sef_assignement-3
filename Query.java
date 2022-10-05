@@ -51,6 +51,3 @@ public class Query {
         System.out.printf("Response:\nDate:", this.responseDate, "Text: ", this.response); // ideally, would actually use smth like customer.responseNotification()
     }
 }
-
-
-
