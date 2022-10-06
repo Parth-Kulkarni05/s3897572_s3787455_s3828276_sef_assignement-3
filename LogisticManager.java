@@ -40,7 +40,7 @@ public class LogisticManager extends Employee{
         // reset the booking status to original status 
         //before making booking for a new event
         super.isServieBooked = false;
-        if (isServieBooked() == false){
+        if (getLoginStatus() == true && isServieBooked() == false){
            
             // set the current event caterer is workin on
             setCurrentEventId(event);
@@ -60,7 +60,7 @@ public class LogisticManager extends Employee{
     // cancel service
     public void cancel(Event event, String optionalServiceName){
         // already booked, then can cancel
-        if (isServieBooked() == true){
+        if (getLoginStatus() == true && isServieBooked() == true){
             setCurrentEventId(event);
             // flower arrangement
             if(optionalServiceName == event.getFlowerDecoration().getServiceName()){
