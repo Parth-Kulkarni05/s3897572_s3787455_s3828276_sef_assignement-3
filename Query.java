@@ -37,15 +37,14 @@ public class Query {
     // methods
     public void getQuery() {
         System.out.println("Query:");
-        
+
         if (eventID == null) {
-            System.out.println("Customer Email: " + this.email + "\tDate: " + date);
+            System.out.printf("%-40s %-15s\n", "Customer Email: " + this.email, "Date: " + date); // See docs: https://docs.oracle.com/javase/tutorial/java/data/numberformat.html
         }
         else {
-            System.out.println("Event ID: " + this.eventID + "\tDate: " + date);
+            System.out.printf("%-40s %-10s\n", "Event ID: " + this.eventID, "Date: " + date);
         }
-
-        System.out.println("Name: " + this.customerName + "\tEmail: " + this.email);
+        System.out.printf("%-40s %-10s\n", "Name: " + this.customerName, "Email: " + this.email);
         System.out.println("Body: " + query);
     }
     
