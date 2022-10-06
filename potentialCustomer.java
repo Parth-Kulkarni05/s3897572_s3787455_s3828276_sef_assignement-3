@@ -1,6 +1,8 @@
 import java.util.Scanner; 
 
 public class potentialCustomer {
+
+    
     public static void makeQuery() {
         Scanner scnr = new Scanner(System.in);
         

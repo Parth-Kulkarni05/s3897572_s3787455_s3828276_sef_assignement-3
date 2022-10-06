@@ -3,7 +3,7 @@ import java.util.Date;
 
 public class Query {
     // field
-    private String ID;
+    private String eventID;
     private String customerName;
     private int phone;
     private String email;
@@ -15,10 +15,10 @@ public class Query {
     private Date responseDate; 
 
     // constructor
-    Query(String ID, String customerName, String query){ // constructor for existing customer
+    Query(String eventID, String customerName, String query){ // constructor for existing customer
         Date currentDate = new Date(); // create a current date object
 
-        this.ID = ID;
+        this.eventID = eventID;
         this.customerName = customerName;
         this.date = currentDate;
         this.query = query;
@@ -36,9 +36,13 @@ public class Query {
     
     // methods
     public void getQuery() {
-        System.out.printf("Query: ", this.ID,"\nDate: ", date);
-        System.out.printf("Name: ", this.customerName, "\nEmail: ", this.email);
-        System.out.printf("Body: ", query);
+        if (eventID == null) {
+            
+        }
+
+        System.out.println("Query: " + this.eventID + "\nDate: " + date);
+        System.out.println("Name: " + this.customerName + "\nEmail: " + this.email);
+        System.out.println("Body: " + query);
     }
     
     public void setResponse(String response) {

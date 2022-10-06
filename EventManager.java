@@ -20,8 +20,6 @@ public class EventManager extends Employee
         
     }
 
-    
-
     public static void getOptions() {
         System.out.printf("viewQuery\nviewComplaint\nchangeVenue");
     }

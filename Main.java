@@ -26,7 +26,14 @@ public class Main {
             String password = scnr.nextLine();
             System.out.println();
 
-            EventManager.logIn(userName, password);
+            EventManager manager1 = new EventManager(userInp, userName, password, password);
+            manager1.logIn(userName, password);
+
+            manager1.logOut();
+
+            Query query1 = new Query(userName, 043212, "test@gmail", "this is a test");
+            query1.getQuery();
+            
 
             if (userName.equals("eventManager")  && password.equals("admin123")) {
                 System.out.printf("welcome " + userName + ". Your options are: \n");
