@@ -4,24 +4,28 @@ public class Event {
     // field
 
     // call related classes here
-    private String venue ; // need to change to class Venue
-    private FoodMenu foodMenu; // neeed to change to class foodMenu
+    private String venue ; // DARIO .....need to change to class Venue
+    private FoodMenu foodMenu; 
     private Music music; 
-    private FlowerDecoration flower;// neeed to change to class optionalServices
-    private boolean isCanceled = false; // cancelation class
-    private String payment; // payment class
-    private String refund; // refund class
+    private FlowerDecoration flower;
+    private boolean isCanceled = false; // 
+    private String payment; // PARTH .....payment class
+    private String refund; // PARTH ....refund class
 
     // normal fields
     private String eventId;
     private Date eventDateTime;
     private int numberOfGuest;
     private boolean isPaid = true;
-    private float cost;
+    private float totalCost; // this one = sum(all service's costs  venue.cost + food.cost...)
+
+    //------------------------------------------------------------------------------------------------------------
     
-    // constructor
+    // constructors
+        // for compusory services (venue, food)
+        // DARIO! PUT YOUR VENUE OBJECT IN ALL CONSTRUCTORS 
     Event(String eventId, Date eventDateTime, 
-        int numberOfGuest, FoodMenu foodMenu){
+        int numberOfGuest, FoodMenu foodMenu){  
         // set the date time, event id, foodmenu, 
         setDateTime(eventDateTime);
         setEventId(eventId);
@@ -77,6 +81,8 @@ public class Event {
         float totalCost = foodMenu.getCost()+ music.getCost()+ flower.getCost();
         setCost(totalCost);
     }
+
+    // ---------------------------------------------------------------------------------------------
 
     //method
 
@@ -147,15 +153,11 @@ public class Event {
     public void isPaid(){
         System.out.println(isPaid);
     }
-    public void setCost(float cost){
-        this.cost = cost;
+    public void setCost(float totalCost){
+        this.totalCost = totalCost;
     }
     public float getCost(){
-        return this.cost;
+        return this.totalCost;
     }
-    
-   
-   
-
     
 }

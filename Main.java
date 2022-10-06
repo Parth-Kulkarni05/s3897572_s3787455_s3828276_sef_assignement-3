@@ -17,6 +17,7 @@ public class Main {
         String userInp = scnr.nextLine();
         System.out.println();
 
+
         if (userInp.equals("manager login")){
             System.out.println("Enter Username");
             String userName = scnr.nextLine();
