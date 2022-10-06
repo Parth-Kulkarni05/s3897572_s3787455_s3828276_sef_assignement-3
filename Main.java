@@ -6,47 +6,69 @@ public class Main {
         Scanner scnr = new Scanner(System.in);
 
         System.out.println("Welcome. Your options are:");
-        System.out.println(
-        "view packages\n"
-        + "make query\n"
-        + "venue inspection\n"
-        + "login with eventID\n"
-        + "manager login"
+        System.out.print(
+        "1. view packages\n"
+        + "2. Make query\n"
+        + "3. Venue inspection\n"
+        + "4. Login with eventID\n"
+        + "5. Manager login\n"
+        + "Please enter your choice (select number): "
         );
 
         String userInp = scnr.nextLine();
         System.out.println();
 
-
-        if (userInp.equals("manager login")){
-            System.out.println("Enter Username");
-            String userName = scnr.nextLine();
-            System.out.println();
-    
-            System.out.println("Enter Password");
-            String password = scnr.nextLine();
-            System.out.println();
-
-            EventManager manager1 = new EventManager(userInp, userName, password, password);
-            manager1.logIn(userName, password);
-
-            manager1.logOut();
-
-            Query query1 = new Query(userName, 043212, "test@gmail", "this is a test");
-            query1.getQuery();
-            
-
-            if (userName.equals("eventManager")  && password.equals("admin123")) {
-                System.out.printf("welcome " + userName + ". Your options are: \n");
-                EventManager.getOptions(); //Note: No event manager object, since it's not an instantiated class
-            }
-        } 
+        // manager login section
+        if (userInp.equals("5")){ 
+            managerLogin(userInp);
+        }
         else if (userInp.equals("login with eventID")) {
-            System.out.println("Please enter your event id:");
+            System.out.println("Please enter your event id: ");
             String eventID = scnr.nextLine();
         }
 
         scnr.close();
-
     }   
+
+
+    public static void managerLogin(String userInp) { //This method is called to handle event manager logins
+        // Getting user input
+        Scanner scnr = new Scanner(System.in);
+        System.out.print("Enter Username: ");
+        
+        String userName = scnr.nextLine();
+        System.out.println();
+
+        System.out.print("Enter Password: ");
+        String password = scnr.nextLine();
+        System.out.println();
+
+        // Creating new eventManager object and logging it in
+        EventManager manager1 = new EventManager(userInp, userName, password, password);
+        manager1.logIn(userName, password);
+
+        // Dummy query, this should really be created in the customer method and then passed to this method
+        Query query1 = new Query(userName, 043212, "test@gmail", "this is a test"); 
+
+        
+        if (userName.equals("eventManager")  && password.equals("admin123")) { // If the manager is an eventmanager
+            System.out.printf("\nWelcome " + userName + ". Your options are: \n");
+            manager1.getOptions(); // Call eventmanager class getoptions() method to display the things it can do
+            String userSelect = scnr.nextLine();
+            System.out.println();
+            
+            
+            if (userSelect.equals("1")) { // View customer query
+                query1.getQuery();
+            }
+            else if (userSelect.equals("4")) { // Logs the manager out if that option is selected
+                manager1.logOut();
+            }
+
+        }
+
+        scnr.close();
+    }
+    
 }
+

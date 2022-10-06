@@ -36,12 +36,16 @@ public class Query {
     
     // methods
     public void getQuery() {
+        System.out.println("Query:");
+        
         if (eventID == null) {
-            
+            System.out.println("Customer Email: " + this.email + "\tDate: " + date);
+        }
+        else {
+            System.out.println("Event ID: " + this.eventID + "\tDate: " + date);
         }
 
-        System.out.println("Query: " + this.eventID + "\nDate: " + date);
-        System.out.println("Name: " + this.customerName + "\nEmail: " + this.email);
+        System.out.println("Name: " + this.customerName + "\tEmail: " + this.email);
         System.out.println("Body: " + query);
     }
     
