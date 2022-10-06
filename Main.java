@@ -17,6 +17,7 @@ public class Main {
         String userInp = scnr.nextLine();
         System.out.println();
 
+
         if (userInp.equals("manager login")){
             System.out.println("Enter Username");
             String userName = scnr.nextLine();
@@ -26,7 +27,7 @@ public class Main {
             String password = scnr.nextLine();
             System.out.println();
 
-            EventManager.logIn(userName, password);
+            EventManager.logIn(userName, password); 
 
             if (userName.equals("eventManager")  && password.equals("admin123")) {
                 System.out.printf("welcome " + userName + ". Your options are: \n");

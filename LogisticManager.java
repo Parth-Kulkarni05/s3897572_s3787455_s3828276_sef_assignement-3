@@ -1,6 +1,6 @@
 public class LogisticManager extends Employee{
     // field
-    private boolean isBooked= false;
+    
     private String currentOptionalServiceName ;
     
 
@@ -16,18 +16,18 @@ public class LogisticManager extends Employee{
     public void hireMusic(Event event, float bill){
         // reset the booking status to original status 
         //before making booking for a new event
-        this.isBooked = false;
-        if (getIsbooked() == false){
+        this.isServieBooked = false;
+        if (getLoginStatus() == true && isServieBooked() == false){
            
             // set the current event caterer is workin on
             setCurrentEventId(event);
             Music music= event.getMusic();
             // hire music 
             this.currentOptionalServiceName = music.getServiceName();
-            // add cost of food menu
+            // send bill to Finance manager
             setBill(bill);
             // booking completed
-            this.isBooked = true;       
+            this.isServieBooked = true;       
             System.out.println( this.currentOptionalServiceName +" of "+ getCurrentEventId() + "is booked");
         } else{
             System.out.println("music service of this event is not booked yet, Please book!! ");
@@ -39,18 +39,18 @@ public class LogisticManager extends Employee{
     public void orderFlowerDecoration(Event event, float bill){
         // reset the booking status to original status 
         //before making booking for a new event
-        this.isBooked = false;
-        if (getIsbooked() == false){
+        super.isServieBooked = false;
+        if (isServieBooked() == false){
            
             // set the current event caterer is workin on
             setCurrentEventId(event);
             FlowerDecoration flower = event.getFlowerDecoration();
             // hire music 
             this.currentOptionalServiceName = flower.getServiceName();
-            // add cost of food menu
+            // send bill to Finance manager
             setBill(bill);
             // booking completed
-            this.isBooked = true;       
+            this.isServieBooked = true;       
             System.out.println( this.currentOptionalServiceName +" of "+ getCurrentEventId() + "is booked");
         } else{
             System.out.println("flower decoration service of this event is not booked yet, Please book!! ");
@@ -60,7 +60,7 @@ public class LogisticManager extends Employee{
     // cancel service
     public void cancel(Event event, String optionalServiceName){
         // already booked, then can cancel
-        if (getIsbooked() == true){
+        if (isServieBooked() == true){
             setCurrentEventId(event);
             // flower arrangement
             if(optionalServiceName == event.getFlowerDecoration().getServiceName()){
@@ -79,9 +79,7 @@ public class LogisticManager extends Employee{
     }
 
     // getter
-    public boolean getIsbooked(){
-        return this.isBooked;
-    }
+    
 
 
 }

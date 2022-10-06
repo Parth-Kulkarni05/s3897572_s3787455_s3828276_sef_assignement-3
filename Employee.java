@@ -2,11 +2,12 @@ abstract class Employee {
     //fields
     private float bill;
     private String currenteventId;
-    private String employeeId ;
-    private String username ;
+    private  String employeeId ;
+    private  String username ;
     private String password;
-    private String position ;
-    private boolean status = false;
+    private  String position ;
+    private  boolean status = false;
+    protected boolean isServieBooked= false;
 
 
     // constructor
@@ -21,18 +22,25 @@ abstract class Employee {
     // methods
 
     public void sendbill(Event event, float bill) {
-        setBill(bill);
-        setCurrentEventId(event);
-        System.out.println("event: " + this.currenteventId);
-        System.out.println("bill: " + this.bill);
+        // if employee loged in, then they can start working
+        // need to add condition when Finance manager class is created
+        if (getLoginStatus() == true){  // && position is not finance manager object
+            setBill(bill);
+            setCurrentEventId(event);
+            System.out.println("event: " + this.currenteventId);
+            System.out.println("bill: " + this.bill);
+
+        }else{ // have not loged in, can not do anything
+            System.out.println("you have not loged in yet! please login frist"); 
+        }   
     }
 
 
     // employee login
-    public void logIn(String username, String password) {
+    public  void logIn(String username, String password) {
         // account validation
-        if (username == this.username && password == this.password){          
-            this.status = true;
+        if (username == getUsername() && password == getPassword()){          
+            setLoginStatus(true);
             System.out.println("log in successfully");        
         }
         else{
@@ -43,8 +51,8 @@ abstract class Employee {
     // logout
     public void logOut(){
         // validation the login status
-        if (this.status == true){           
-            this.status = false;
+        if (getLoginStatus() == true){           
+            setLoginStatus(false);
             System.out.println("log out successfully");
         }
         else{ System.out.println("have not log in yet");} 
@@ -91,6 +99,17 @@ abstract class Employee {
         return this.currenteventId ;
     }
 
-   
+    public boolean getLoginStatus(){
+        return this.status;
+    }
+
+    private void setLoginStatus(boolean status){
+        this.status = status;
+    }
+
+    public boolean isServieBooked(){
+        return this.isServieBooked;
+    }
+
 
 }

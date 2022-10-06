@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class Caterer extends Employee {
     // field
-    private boolean isBooked= false;
     private ArrayList<String> currentFoodMenu;
     
     // constructor
@@ -14,8 +13,8 @@ public class Caterer extends Employee {
     public void orderFoodMenu(Event event, int drink, int cutlery, float bill){
         // reset the booking status to original status 
         //before making booking for a new event
-        this.isBooked = false;
-        if (getIsbooked() == false){
+        this.isServieBooked = false;
+        if (getLoginStatus() == true && isServieBooked() == false){
             // set the current event caterer is workin on
             setCurrentEventId(event);
             FoodMenu foodMenu = event.getFoodMenu();
@@ -28,7 +27,7 @@ public class Caterer extends Employee {
             // add cost of food menu
             setBill(bill);
             // booking completed
-            this.isBooked = true;       
+            this.isServieBooked = true;       
             System.out.println("the food menu of event " + getCurrentEventId() + "is booked");
         } else{
             System.out.println("the food menu of this event is not booked yet, Please book!! ");
@@ -37,7 +36,7 @@ public class Caterer extends Employee {
 
     // add new items in foodmenu
     public void addFoodMenu(Event event, String newFood, float bill, float cost){
-        if (getIsbooked() == true){
+        if (getLoginStatus() == true && isServieBooked() == true){
             // get foodmenu
             FoodMenu foodmenu= event.getFoodMenu();
             // add new item in food menu
@@ -54,7 +53,7 @@ public class Caterer extends Employee {
 
     // change food menu by postion
     public void changeFoodMenu(Event event, String newFood, int oldFoodPosition, float bill, float cost){
-        if (getIsbooked() == true){
+        if (getLoginStatus() == true && isServieBooked() == true){
             // get food menu
             FoodMenu foodmenu= event.getFoodMenu();
             // change item in food menu
@@ -71,14 +70,18 @@ public class Caterer extends Employee {
 
     // updated number of drink
     public void updatedDinkOrder(int drink, Event event){
-        FoodMenu foodmenu = event.getFoodMenu();
-        foodmenu.orderDrink(drink);
+        if (getLoginStatus() == true && isServieBooked() == true){
+            FoodMenu foodmenu = event.getFoodMenu();
+            foodmenu.orderDrink(drink);
+        }
     }
 
     // updated number of cutlery
     public void updatedCutlery(int cutlery, Event event){
-        FoodMenu foodmenu = event.getFoodMenu();
-        foodmenu.arrangeCutlery(cutlery);
+        if (getLoginStatus() == true && isServieBooked() == true){
+            FoodMenu foodmenu = event.getFoodMenu();
+            foodmenu.arrangeCutlery(cutlery);
+    }
     }
 
     // getter
@@ -88,8 +91,5 @@ public class Caterer extends Employee {
     public ArrayList<String> getCurrentFoodMenu(){
         return this.currentFoodMenu;
     }
-    public boolean getIsbooked(){
-        return this.isBooked;
-    }
-
+    
 }
