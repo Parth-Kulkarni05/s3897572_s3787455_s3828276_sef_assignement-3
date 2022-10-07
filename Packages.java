@@ -24,11 +24,11 @@ public class Packages {
 
         System.out.println("We have the following packages available for you");
 
-        System.out.println("1 - Family Events - Up to 15 People - $400");
+        System.out.println("1 - Family Events - Up to 15 People - " + first_package_priceRange);
 
-        System.out.println("2 - Party Events - Up to 50 People - $800");
+        System.out.println("2 - Party Events - Up to 50 People - " + second_package_priceRange);
 
-        System.out.println("3 - Grand Events - Up to 150 People - $1200");
+        System.out.println("3 - Grand Events - Up to 150 People - " + third_package_priceRange);
 
     }
 
@@ -84,28 +84,16 @@ public class Packages {
     // Methods the finance manager can use to update the packages
 
 
-    public void updatePackage1(String packageName, int maxNumberOfGuests, int priceRange){
-        this.first_package_name = packageName;
-        this.first_package_max_people = maxNumberOfGuests;
+    public void updatePackage1(int priceRange){
         this.first_package_priceRange = priceRange;
-
-
     }
 
-    public void updatePackage2(String packageName, int maxNumberOfGuests, int priceRange){
-        this.second_package_name = packageName;
-        this.second_package_max_people = maxNumberOfGuests;
+    public void updatePackage2(int priceRange){
         this.second_package_priceRange = priceRange;
-
-
     }
 
-    public void updatePackage3(String packageName, int maxNumberOfGuests, int priceRange){
-        this.third_package_name = packageName;
-        this.third_package_max_people = maxNumberOfGuests;
+    public void updatePackage3(int priceRange){
         this.third_package_priceRange = priceRange;
-
-
     }
 
 

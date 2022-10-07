@@ -7,7 +7,9 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) throws ParseException {
 
-        // Initialize relevant class objects //
+        // ----------------- Initialize relevant class objects ----------------- \\
+        FinanceManager financeMgr = new FinanceManager("default", "financeManager", "admin123", "Finance Manager"); // Creates finance manager object, so we can then also get the package object from it, since it's the one creating it
+        Query query = new Query(null, 0, null, null);
         // Menu
         ArrayList<String> menu = new ArrayList<String>();
         menu.add("beef stew");
@@ -18,55 +20,57 @@ public class Main {
         menu.set(0, "Vegetable Stew");
         FoodMenu vegMenu = new FoodMenu("vegetarian", null, 150);
 
-        // 
+        // ----------------- Get base user selections, loop until user selects exit ----------------- \\
+        String userInp = "";
         Scanner scnr = new Scanner(System.in);
+        while (!userInp.equals("6") && !userInp.equals("0")) {
+            System.out.println("\n\nWelcome. Your options are:");
+            System.out.print(
+            "1. Make Booking\n"
+            + "2. Make query\n"
+            + "3. Venue inspection\n"
+            + "4. Login with eventID\n"
+            + "5. Manager login\n"
+            + "6. Exit\n"
+            + "Please enter your choice (select number): "
+            );
 
-        System.out.println("Welcome. Your options are:");
-        System.out.print(
-        "1. Make Booking\n"
-        + "2. Make query\n"
-        + "3. Venue inspection\n"
-        + "4. Login with eventID\n"
-        + "5. Manager login\n"
-        + "Please enter your choice (select number): "
-        );
+            userInp = scnr.nextLine();
+            System.out.println();
 
-        String userInp = scnr.nextLine();
-        System.out.println();
+        // ----------------- Check which option selected, call relevant class  ----------------- \\
+            if (userInp.equals("1")){ // Making a booking
+                potentialCustomerBookingProcess(financeMgr);
+            }
+            else if (userInp.equals("2")) { // Potential customer make query
+                potentialCustomer p_customer = new potentialCustomer();
+                query = p_customer.makeQuery();
+            }
+            else if (userInp.equals("3")) { // Venue inspection
+                System.out.println("Please enter venue name: ");
+                String venueName = scnr.nextLine();
 
+            }
+            else if (userInp.equals("4")) { 
+                System.out.println("Please enter your event id: ");
+                String eventID = scnr.nextLine();
+            }
+            else if (userInp.equals("5")) {
+                managerLogin(userInp, financeMgr, query);
+            }
+            else if (userInp.equals("6")){
+               break;
+            }
 
-        if (userInp.equals("1")){ // Making a booking
-
-            potentialCustomerBookingProcess();
-
+            System.out.print("Operation Complete. Select next action (0 = EXIT, 1 = SHOW ALL OPTIONS AGAIN): ");
+            userInp = scnr.nextLine();
         }
-        else if (userInp.equals("2")) { // Potential customer make query
-            potentialCustomer p_customer = new potentialCustomer();
-            Query pC_query = p_customer.makeQuery();
-        }
-        else if (userInp.equals("3")) { // Venue inspection
-            System.out.println("Please enter venue name: ");
-            String venueName = scnr.nextLine();
-
-        }
-        else if (userInp.equals("4")) { 
-            System.out.println("Please enter your event id: ");
-            String eventID = scnr.nextLine();
-        }
-        else if (userInp.equals("5")) {
-            managerLogin(userInp);
-        }
-
-        else if (userInp.equals("1")){
-            potentialCustomerBookingProcess();
-
-        }
-
     }   
 
 
-    public static void managerLogin(String userInp){ //This method is called to handle event manager logins
-        // Getting user input
+    public static void managerLogin(String userInp, FinanceManager financeMgr, Query query){ //This method is called to handle event manager logins. customer query and financemgr objects are passed in for use
+
+        // ----------------- Get manager login info  ----------------- \\
         Scanner scnr = new Scanner(System.in);
         System.out.print("Enter Username: ");
         
@@ -77,31 +81,14 @@ public class Main {
         String password = scnr.nextLine();
         System.out.println();
 
-        
+        // ----------------- Check login credentials & log in if match  ----------------- \\
         if (userName.equals("eventManager")  && password.equals("admin123")) { // If the manager is an eventmanager
             // Creating new eventManager object and logging it in
             EventManager eventmanager = new EventManager(userInp, userName, password, "Event Manager");
             eventmanager.logIn(userName, password);
-
-            System.out.printf("\nWelcome " + userName + ". Your options are: \n");
-            eventmanager.getOptions(); // Call eventmanager class getoptions() method to display the things it can do
-            String userSelect = scnr.nextLine();
-            System.out.println();
-            
-            
-            if (userSelect.equals("1")) { // View customer query
-                // Dummy query, this should really be created in the customer method and then passed to this method
-                Query query1 = new Query(userName, 043212, "test@gmail", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam varius maximus feugiat. Aliquam pulvinar augue ut eros placerat ultrices in at risus. Cras tristique nunc in lobortis tempus. Suspendisse potenti. Sed maximus est eu urna vestibulum, at lacinia eros varius. Phasellus in nibh tortor. Pellentesque blandit nibh vel fringilla auctor."); 
-                query1.getQuery();
-            }
-            else if (userSelect.equals("4")) { // Logs the manager out if that option is selected
-                eventmanager.logOut();
-            }
+            eventmanager.getOptions(query, userName);
         }
-
         else if (userName.equals("financeManager")  && password.equals("admin123")) { // Finance Manager section
-            FinanceManager financeMgr = new FinanceManager(userInp, userName, password, "Finance Manager");
-
             System.out.printf("\nWelcome " + userName + ". Your options are: \n");
             financeMgr.getOptions();
         }
@@ -115,14 +102,14 @@ public class Main {
     
 
 
-    public static void potentialCustomerBookingProcess() throws ParseException{
+    public static void potentialCustomerBookingProcess(FinanceManager financeMgr) throws ParseException{
 
            Scanner scnr = new Scanner(System.in);
 
             int amount = 0;
 
-            Packages package1 = new Packages(); // No constructor in there as of now 
-            
+            //NOTE: I have made the package object be declared by the finance manager (gets returned by the fin manager, and set to package1)
+            Packages package1 = financeMgr.getPackages();
             package1.displayPackages();
 
             HashMap<String, String> packageInfo = package1.setPackage();

@@ -68,7 +68,11 @@ public class Venue {
 
 
         while (numberofAttendes > this.numberOfGuest){
-            System.out.println("Number Of Guests have to be less than" + String.valueOf(this.numberOfGuest));
+            System.out.println("Number Of Guests have to be less than " + String.valueOf(this.numberOfGuest));
+
+            System.out.println("Please enter the number of guests attending");
+            attendes = userInput.nextLine();
+            numberofAttendes = Integer.parseInt(attendes);
         }
 
         this.numberOfGuest = numberofAttendes; // We are essentially replacing the maxNumberOfGuests to the number of attending. 
