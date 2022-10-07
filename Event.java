@@ -4,7 +4,7 @@ public class Event {
     // field
 
     // call related classes here
-    private String venue ; // DARIO .....need to change to class Venue
+    private Venue venue ; 
     private FoodMenu foodMenu; 
     private Music music; 
     private FlowerDecoration flower;

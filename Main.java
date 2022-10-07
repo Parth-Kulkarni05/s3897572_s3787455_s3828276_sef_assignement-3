@@ -1,11 +1,22 @@
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner; 
+import java.util.Scanner;
+import java.util.ArrayList; 
 
 public class Main {
     public static void main(String[] args) throws ParseException {
+        // Menu
+        ArrayList<String> menu = new ArrayList<String>();
+        menu.add("beef stew");
+        menu.add("pancakes");
+        menu.add("ice cream");
+        FoodMenu regMenu = new FoodMenu("regular", menu , 200);
 
+        menu.set(0, "Vegetable Stew");
+        FoodMenu vegMenu = new FoodMenu("vegetarian", null, 150);
+
+        // 
         Scanner scnr = new Scanner(System.in);
 
         System.out.println("Welcome. Your options are:");
@@ -96,7 +107,7 @@ public class Main {
 
         }
         else if (userName.equals("financeManager")  && password.equals("admin123")) {
-
+            
 
         }
         else if (userName.equals("logisticManager")  && password.equals("admin123")) {
