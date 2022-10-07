@@ -25,7 +25,7 @@ public class Payment {
 
         System.out.println("Please Enter Your Phone Number");
 
-        this.phone = userInput.nextInt();
+        this.phone = Integer.parseInt(userInput.nextLine()); // This is a workaround for a bug where having a nextLine() after a nextInt() will skip the nextLine() input 
 
         System.out.println("Please Enter Your Email");
 
