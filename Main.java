@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws ParseException {
+
+        // Initialize relevant class objects //
         // Menu
         ArrayList<String> menu = new ArrayList<String>();
         menu.add("beef stew");
@@ -95,19 +97,19 @@ public class Main {
             else if (userSelect.equals("4")) { // Logs the manager out if that option is selected
                 manager1.logOut();
             }
+        }
 
-            else if (userName.equals("financeManager")  && password.equals("admin123")) {
-                
-            }
-            else if (userName.equals("logisticManager")  && password.equals("admin123")) {
+        else if (userName.equals("financeManager")  && password.equals("admin123")) { // Finance Manager section
+            FinanceManager financeMgr = new FinanceManager(userInp, userName, password, "Finance Manager");
+
+            System.out.printf("\nWelcome " + userName + ". Your options are: \n");
+            financeMgr.getOptions();
+        }
+        else if (userName.equals("logisticManager")  && password.equals("admin123")) {
+        
+        }
+        else if (userName.equals("caterer")  && password.equals("admin123")) {
             
-
-            }
-            else if (userName.equals("caterer")  && password.equals("admin123")) {
-                
-            
-            }
-
         }
     }
     
