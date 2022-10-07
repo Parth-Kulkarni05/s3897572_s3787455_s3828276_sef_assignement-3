@@ -48,7 +48,7 @@ public class FinanceManager extends Employee {
                 payStaff();
             }
 
-            System.out.print("Operation Complete. Select next action (0 = EXIT, 1 = SHOW ALL OPTIONS AGAIN): ");
+            System.out.print("Operation Complete. Select next action (0 = EXIT, 1 = SHOW FINANCE MANAGER OPTIONS AGAIN): ");
             userOption = scnr.nextLine();
         }
     }

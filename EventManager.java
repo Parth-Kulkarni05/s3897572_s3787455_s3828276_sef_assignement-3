@@ -53,7 +53,7 @@ public class EventManager extends Employee
                     this.logOut();
                     break;
                 }
-                System.out.print("Operation Complete. Select next action (0 = EXIT, 1 = SHOW ALL OPTIONS AGAIN): ");
+                System.out.print("Operation Complete. Select next action (0 = EXIT, 1 = SHOW EVENT MANAGER OPTIONS AGAIN): ");
                 userSelect = scnr.nextLine();
             }
     }
