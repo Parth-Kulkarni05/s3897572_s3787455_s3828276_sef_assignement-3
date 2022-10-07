@@ -1,17 +1,24 @@
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 
 public class Packages {
 
-    private String name;
-    private int maxNumberOfGuests;
-    private int priceRange;
+    private String first_package_name = "Family Events";
+    private int first_package_max_people = 15;
+    private int first_package_priceRange = 400;
+
+    private String second_package_name = "Party Events";
+    private int second_package_max_people = 50;
+    private int second_package_priceRange = 800;
+
+    private String third_package_name = "Grand Events";
+    private int third_package_max_people = 150;
+    private int third_package_priceRange = 1200;
+
+
     
     // constructor
-
-
 
     public void displayPackages() {
 
@@ -39,43 +46,68 @@ public class Packages {
 
         if (packageChoice == 1){
 
-            name = "Family Events";
-            maxNumberOfGuests = 15;
-            priceRange = 400;
-
+            packageinfo.put("choice", String.valueOf(packageChoice));
+            packageinfo.put("name", this.first_package_name);
+            packageinfo.put("maxNumberofGuests", String.valueOf(this.first_package_max_people));
+            packageinfo.put("priceRange", String.valueOf(this.first_package_priceRange));
 
         }
         
         else if (packageChoice == 2){
-
-            name = "Party Events";
-            maxNumberOfGuests = 50;
-            priceRange = 800;
+            packageinfo.put("choice", String.valueOf(packageChoice));
+            packageinfo.put("name", this.second_package_name);
+            packageinfo.put("maxNumberofGuests", String.valueOf(this.second_package_max_people));
+            packageinfo.put("priceRange", String.valueOf(this.second_package_priceRange));
 
          
         }
         
         else{
-            
-            name = "Grand Events";
-            maxNumberOfGuests = 150;
-            priceRange = 1200;
+
+            packageinfo.put("choice", String.valueOf(packageChoice));
+            packageinfo.put("name", this.third_package_name);
+            packageinfo.put("maxNumberofGuests", String.valueOf(this.third_package_max_people));
+            packageinfo.put("priceRange", String.valueOf(this.third_package_priceRange));
+
+
         }
 
-        packageinfo.put("choice", String.valueOf(packageChoice));
-        packageinfo.put("name", name);
-        packageinfo.put("maxNumberofGuests", String.valueOf(maxNumberOfGuests));
-        packageinfo.put("priceRange", String.valueOf(priceRange));
 
 
         return packageinfo;
-        
-        
-
     
-
+        
 
     } 
+
+
+    // Methods the finance manager can use to update the packages
+
+
+    public void updatePackage1(String packageName, int maxNumberOfGuests, int priceRange){
+        this.first_package_name = packageName;
+        this.first_package_max_people = maxNumberOfGuests;
+        this.first_package_priceRange = priceRange;
+
+
+    }
+
+    public void updatePackage2(String packageName, int maxNumberOfGuests, int priceRange){
+        this.second_package_name = packageName;
+        this.second_package_max_people = maxNumberOfGuests;
+        this.second_package_priceRange = priceRange;
+
+
+    }
+
+    public void updatePackage3(String packageName, int maxNumberOfGuests, int priceRange){
+        this.third_package_name = packageName;
+        this.third_package_max_people = maxNumberOfGuests;
+        this.third_package_priceRange = priceRange;
+
+
+    }
+
 
 
 }

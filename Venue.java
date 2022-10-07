@@ -10,7 +10,7 @@ public class Venue {
 
 
     private int numberOfGuest;
-    private Date date_venue;
+    private String date_venue;
     private boolean isBooked; // This is for the eventManager to confirm the booking
 
     // constructor
@@ -76,18 +76,20 @@ public class Venue {
 
         
 
-        System.out.print("The venue is available for the following dates: 30/10/2002, 5/09/2022");
+        System.out.print("The venue is available for the following dates:05-AUG-2022");
 
         System.out.println("Enter the date you want to commence event in exact formatting..(E.g: 30-October-10)");;
 
-        String str_date = userInput.nextLine();
+        String str_date = userInput.nextLine().strip();
 
-        this.date_venue = new SimpleDateFormat("dd-MMM-yy").parse(str_date); // Make this into a Date Object
+        this.date_venue = str_date; // Make this into a Date Object
+
+        this.isBooked = true;
         
     }
     
     // methods
-    public float bookVenue(int numberOfGuest, Date date) {
+    public float bookVenue(int numberOfGuest, String date) {
         this.numberOfGuest = numberOfGuest;
         this.date_venue = date;
         this.isBooked = true;

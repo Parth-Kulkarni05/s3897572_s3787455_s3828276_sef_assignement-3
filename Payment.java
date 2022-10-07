@@ -1,5 +1,6 @@
 import java.time.*;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Payment {
     // field
@@ -11,20 +12,38 @@ public class Payment {
     private float amount;
 
     // constructor
-    Payment(String name, int phone, String email, String paymentMethod, float amount){
-        Date currentDate = new Date(); // create a current date object
 
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.paymentMethod = paymentMethod;
-        this.paidDate = currentDate;
-        this.amount = amount;
+    public void getDetails(int venue_amount){
+
+        this.amount = venue_amount;
+
+        Scanner userInput = new Scanner(System.in);
+
+        System.out.println("Please Enter Your Name");
+
+        this.name = userInput.nextLine();
+
+        System.out.println("Please Enter Your Phone Number");
+
+        this.phone = userInput.nextInt();
+
+        System.out.println("Please Enter Your Email");
+
+        this.email = userInput.nextLine();
+
+        System.out.println("Please Enter Your Payment Method- Type Card or Debit for $" + String.valueOf(amount));
+
+        this.paymentMethod = userInput.nextLine();
+
+        System.out.print("Payment Successful");
+
+        this.paidDate = new Date();
+       
     }
-    
+
     // methods
     public void issueInvoice() {
-        System.out.println("Invoice:");
+        System.out.println(" Invoice:");
         System.out.println("Name: " + this.name + "      " + "Phone: " + this.phone);
         System.out.println("Email: " + this.email + "      " + "Payment Method: " + this.paymentMethod);
         System.out.println("Payment Date: " + this.paidDate + "      " + "Amount: " + this.amount);
