@@ -1,7 +1,10 @@
+import java.text.ParseException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner; 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 
         Scanner scnr = new Scanner(System.in);
 
@@ -64,6 +67,33 @@ public class Main {
             else if (userSelect.equals("4")) { // Logs the manager out if that option is selected
                 manager1.logOut();
             }
+
+        }
+
+        else if (userInp.equals("view packages")){
+
+            Packages package1 = new Packages(); // No constructor in there as of now 
+            
+            package1.displayPackages();
+
+            HashMap<String, String> packageInfo = package1.setPackage();
+
+
+            Venue venue = new Venue(packageInfo.get("name"), Float.parseFloat(packageInfo.get("priceRange")), Integer.parseInt(packageInfo.get("maxNumberofGuests")));
+
+            venue.displayVenues(Integer.parseInt(packageInfo.get("choice")));
+
+            venue.setVenue();
+
+            venue.bookVenue(0, null)
+
+            
+
+
+
+
+
+
 
         }
 
