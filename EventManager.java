@@ -1,27 +1,34 @@
+
 public class EventManager extends Employee
 {
     EventManager(String employeeId, String username, String password, String position) {
         super(employeeId, username, password, position);
     }
-
-    public static void viewQuery(Query queryobj) {
+    
+    public void viewQuery(Query queryobj) {
         queryobj.getQuery();
     }
 
-    public static void viewComplaint(Query queryobj) {
+    public void viewComplaint(Query queryobj) {
         ;
     }
 
-    public static void changeVenue() {
+    public void changeVenue() {
         ;
     }
 
-    public static void bookVenue() {
-        bookVenue();
+    public void bookVenue() {
         
     }
 
-    public static void getOptions() {
-        System.out.printf("viewQuery\nviewComplaint\nchangeVenue");
+    public void getOptions() {
+        System.out.printf(
+            "1. viewQuery\n"
+            + "2. viewComplaint\n"
+            + "3. changeVenue\n"
+            + "4. logout\n"
+            + "Select option: "
+            );
     }
+    
 }
