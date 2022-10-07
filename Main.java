@@ -48,7 +48,7 @@ public class Main {
         manager1.logIn(userName, password);
 
         // Dummy query, this should really be created in the customer method and then passed to this method
-        Query query1 = new Query(userName, 043212, "test@gmail", "this is a test"); 
+        Query query1 = new Query(userName, 043212, "test@gmail", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam varius maximus feugiat. Aliquam pulvinar augue ut eros placerat ultrices in at risus. Cras tristique nunc in lobortis tempus. Suspendisse potenti. Sed maximus est eu urna vestibulum, at lacinia eros varius. Phasellus in nibh tortor. Pellentesque blandit nibh vel fringilla auctor."); 
 
         
         if (userName.equals("eventManager")  && password.equals("admin123")) { // If the manager is an eventmanager
