@@ -74,8 +74,6 @@ public class Main {
         }
 
     }   
-        scnr.close();
-    }
 
 
     public static void managerLogin(String userInp){ //This method is called to handle event manager logins
@@ -111,6 +109,18 @@ public class Main {
                 manager1.logOut();
             }
 
+            else if (userName.equals("financeManager")  && password.equals("admin123")) {
+                
+            }
+            else if (userName.equals("logisticManager")  && password.equals("admin123")) {
+            
+
+            }
+            else if (userName.equals("caterer")  && password.equals("admin123")) {
+                
+            
+            }
+
         }
     }
     
@@ -137,24 +147,7 @@ public class Main {
 
     }
 
-
-    }
-
-
-        
-
-        else if (userName.equals("financeManager")  && password.equals("admin123")) {
-            
-
-        }
-        else if (userName.equals("logisticManager")  && password.equals("admin123")) {
-            
-
-        }
-        else if (userName.equals("caterer")  && password.equals("admin123")) {
-            
-            
-        }
-        scnr.close();
-    }
 }
+
+
+
