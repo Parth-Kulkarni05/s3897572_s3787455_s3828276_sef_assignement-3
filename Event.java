@@ -23,7 +23,6 @@ public class Event {
     
     // constructors
         // for compusory services (venue, food)
-        // DARIO! PUT YOUR VENUE OBJECT IN ALL CONSTRUCTORS 
     Event(String eventId, Date eventDateTime, 
         int numberOfGuest, Venue venue, FoodMenu foodMenu){
         // set the date time, event id, foodmenu, 

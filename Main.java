@@ -7,10 +7,13 @@ public class Main {
     public static void main(String[] args) throws ParseException {
 
         Scanner scnr = new Scanner(System.in);
+        String userInp;
+        String eventID;
+
 
         System.out.println("Welcome. Your options are:");
         System.out.print(
-        "1. view packages\n"
+        "1. Make Booking\n"
         + "2. Make query\n"
         + "3. Venue inspection\n"
         + "4. Login with eventID\n"
@@ -18,20 +21,50 @@ public class Main {
         + "Please enter your choice (select number): "
         );
 
-        String userInp = scnr.nextLine();
+        userInp = scnr.nextLine();
         System.out.println();
 
-        // manager login section
-        if (userInp.equals("5")){ 
-            managerLogin(userInp);
+
+        if (userInp.equals("1")){ 
+            Packages packages = new Packages();
+            packages.displayPackages();
         }
-        else if (userInp.equals("login with eventID")) {
+        else if (userInp.equals("2")) { // Potential customer makes query
+            makeQuery();
+        }
+        else if (userInp.equals("3")) {
             System.out.println("Please enter your event id: ");
-            String eventID = scnr.nextLine();
+            eventID = scnr.nextLine();
+        }
+        else if (userInp.equals("4")) {
+            System.out.println("Please enter your event id: ");
+            eventID = scnr.nextLine();
+        }
+        else if (userInp.equals("5")) {
+            managerLogin(userInp);
         }
 
         scnr.close();
-    }   
+    }
+
+    public static void makeQuery() {
+        Scanner scnr = new Scanner(System.in);
+        System.out.print("Please enter your name: ");
+        String name = scnr.nextLine();
+
+        System.out.print("Please enter your phone number: ");
+        String phone = scnr.nextLine();
+
+        System.out.print("Please enter your email: ");
+        String email = scnr.nextLine();
+
+        System.out.print("Please enter your query text: ");
+        String query = scnr.nextLine();
+        
+        Query pC_query = new Query(name, Integer.parseInt(phone), email, query); //potential customer query
+
+        scnr.close();
+    }
 
 
     public static void managerLogin(String userInp) { //This method is called to handle event manager logins
@@ -47,7 +80,7 @@ public class Main {
         System.out.println();
 
         // Creating new eventManager object and logging it in
-        EventManager manager1 = new EventManager(userInp, userName, password, password);
+        EventManager manager1 = new EventManager(userInp, userName, password, "Event Manager");
         manager1.logIn(userName, password);
 
         // Dummy query, this should really be created in the customer method and then passed to this method
@@ -83,9 +116,9 @@ public class Main {
 
             venue.displayVenues(Integer.parseInt(packageInfo.get("choice")));
 
-            venue.setVenue();
+            // venue.setVenue();
 
-            venue.bookVenue(0, null)
+            venue.bookVenue(0, null);
 
             
 
