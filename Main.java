@@ -117,13 +117,15 @@ public class Main {
 
     public static void potentialCustomerBookingProcess() throws ParseException{
 
+           Scanner scnr = new Scanner(System.in);
+
+            int amount = 0;
+
             Packages package1 = new Packages(); // No constructor in there as of now 
             
             package1.displayPackages();
 
             HashMap<String, String> packageInfo = package1.setPackage();
-
-
 
 
             Venue venue = new Venue(packageInfo.get("name"), Float.parseFloat(packageInfo.get("priceRange")), Integer.parseInt(packageInfo.get("maxNumberofGuests")));
@@ -132,7 +134,35 @@ public class Main {
 
             venue.setVenue();
 
-            
+
+            System.out.println("Do you want to Add Optional Services To The Order? Type yes or no");
+
+            String response = scnr.nextLine();
+
+
+            if (response.equals("yes")){
+
+                Music music = new Music("Mexican Band", 200.00f);
+
+                FlowerDecoration flowerDecoration = new FlowerDecoration("Yellow Flower Service", 500.00f, "Pick-up");
+
+                amount = amount + 200 + 500;
+
+
+            }
+
+            amount = amount + 1000;
+
+
+            Payment payment = new Payment();
+
+            payment.getDetails(amount);
+
+            payment.issueInvoice();
+
+
+          //  Event event = new Event(response, null, amount, venue, null)
+
 
     }
 
