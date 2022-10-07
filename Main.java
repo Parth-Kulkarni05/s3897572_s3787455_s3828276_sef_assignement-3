@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws ParseException {
+
+        // Initialize relevant class objects //
         // Menu
         ArrayList<String> menu = new ArrayList<String>();
         menu.add("beef stew");
@@ -35,20 +37,7 @@ public class Main {
 
         if (userInp.equals("1")){ // Making a booking
 
-            Packages package1 = new Packages(); // No constructor in there as of now 
-            
-            package1.displayPackages();
-
-            HashMap<String, String> packageInfo = package1.setPackage();
-
-
-            Venue venue = new Venue(packageInfo.get("name"), Float.parseFloat(packageInfo.get("priceRange")), Integer.parseInt(packageInfo.get("maxNumberofGuests")));
-
-            venue.displayVenues(Integer.parseInt(packageInfo.get("choice")));
-
-            // venue.setVenue();
-
-            venue.bookVenue(0, null);
+            potentialCustomerBookingProcess();
 
         }
         else if (userInp.equals("2")) { // Potential customer make query
@@ -108,19 +97,19 @@ public class Main {
             else if (userSelect.equals("4")) { // Logs the manager out if that option is selected
                 manager1.logOut();
             }
+        }
 
-            else if (userName.equals("financeManager")  && password.equals("admin123")) {
-                
-            }
-            else if (userName.equals("logisticManager")  && password.equals("admin123")) {
+        else if (userName.equals("financeManager")  && password.equals("admin123")) { // Finance Manager section
+            FinanceManager financeMgr = new FinanceManager(userInp, userName, password, "Finance Manager");
+
+            System.out.printf("\nWelcome " + userName + ". Your options are: \n");
+            financeMgr.getOptions();
+        }
+        else if (userName.equals("logisticManager")  && password.equals("admin123")) {
+        
+        }
+        else if (userName.equals("caterer")  && password.equals("admin123")) {
             
-
-            }
-            else if (userName.equals("caterer")  && password.equals("admin123")) {
-                
-            
-            }
-
         }
     }
     
