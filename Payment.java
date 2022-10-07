@@ -30,4 +30,3 @@ public class Payment {
         System.out.println("Payment Date: " + this.paidDate + "      " + "Amount: " + this.amount);
     }
 }
-

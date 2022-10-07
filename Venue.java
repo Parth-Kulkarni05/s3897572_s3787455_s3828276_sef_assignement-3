@@ -11,7 +11,7 @@ public class Venue {
 
     private int numberOfGuest;
     private Date date_venue;
-    private boolean isBooked; //TODO: Check if this is needed, either venue obj is only created when venue is actually booked, or this is needed 
+    private boolean isBooked; // This is for the eventManager to confirm the booking
 
     // constructor
     Venue(String name, float cost, int numberOfGuest){
