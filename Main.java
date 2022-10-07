@@ -1,7 +1,10 @@
+import java.text.ParseException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner; 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 
         Scanner scnr = new Scanner(System.in);
 
@@ -34,7 +37,7 @@ public class Main {
 
             Query query1 = new Query(userName, 043212, "test@gmail", "this is a test");
             query1.getQuery();
-            
+                        
 
             if (userName.equals("eventManager")  && password.equals("admin123")) {
                 System.out.printf("welcome " + userName + ". Your options are: \n");
@@ -44,6 +47,33 @@ public class Main {
         else if (userInp.equals("login with eventID")) {
             System.out.println("Please enter your event id:");
             String eventID = scnr.nextLine();
+        }
+
+        else if (userInp.equals("view packages")){
+
+            Packages package1 = new Packages(); // No constructor in there as of now 
+            
+            package1.displayPackages();
+
+            HashMap<String, String> packageInfo = package1.setPackage();
+
+
+            Venue venue = new Venue(packageInfo.get("name"), Float.parseFloat(packageInfo.get("priceRange")), Integer.parseInt(packageInfo.get("maxNumberofGuests")));
+
+            venue.displayVenues(Integer.parseInt(packageInfo.get("choice")));
+
+            venue.setVenue();
+
+            venue.bookVenue(0, null)
+
+            
+
+
+
+
+
+
+
         }
 
         scnr.close();
