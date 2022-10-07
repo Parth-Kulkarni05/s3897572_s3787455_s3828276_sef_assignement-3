@@ -31,7 +31,7 @@ abstract class Employee {
             System.out.println("bill: " + this.bill);
 
         }else{ // have not loged in, can not do anything
-            System.out.println("you have not loged in yet! please login frist"); 
+            System.out.println("you have not logged in yet! please login first"); 
         }   
     }
 

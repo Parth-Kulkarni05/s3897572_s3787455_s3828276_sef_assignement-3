@@ -5,11 +5,6 @@ import java.util.Scanner;
 public class FinanceManager extends Employee {
     private CostPlan costplan = new CostPlan(); // create global costplan variable, so all methods can access it
 
-    // Manager fund allocation
-    private float eventMgrAlloc;
-    private float logisticMgrAlloc;
-    private float catererAlloc;
-
     FinanceManager(String employeeId, String username, String password, String position) {
         super(employeeId, username, password, position);
     }
@@ -58,11 +53,11 @@ public class FinanceManager extends Employee {
         scnr.close();
     }
 
-    public void updatePackage() { // TODO: Update package, get Parth to implement package.update()
+    private void updatePackage() { // TODO: Update package, get Parth to implement package.update()
         ;
     }
 
-    public void createCostPlan() { // Enter cost plan details and fill in cost plan object
+    private void createCostPlan() { // Enter cost plan details and fill in cost plan object
         Scanner scnr = new Scanner(System.in);
 
         System.out.print("Enter Cost Plan ID: ");
@@ -73,7 +68,7 @@ public class FinanceManager extends Employee {
         costplan.createCostPlan(costplanID, cost);
     }
 
-    public void updateCostPlan() { // Update cost plan object price
+    private void updateCostPlan() { // Update cost plan object price
         Scanner scnr = new Scanner(System.in);
 
         System.out.print("Enter New Cost Amount: ");
@@ -81,11 +76,11 @@ public class FinanceManager extends Employee {
         costplan.updateCostPlan(cost);
     }
 
-    public void viewCostPlan() { // Print out cost plan
+    private void viewCostPlan() { // Print out cost plan
         costplan.viewCostPlan();
     }
 
-    public void allocateMoney() { // Allocate money to different managers for the event, this is saved in cost plan
+    private void allocateMoney() { // Allocate money to different managers for the event, this is saved in cost plan
         Scanner scnr = new Scanner(System.in);
 
         System.out.print("Amount to allocate to Event Manager: ");
@@ -100,16 +95,26 @@ public class FinanceManager extends Employee {
         costplan.allocateMoney(EMcost, LMcost, Ccost);
     }
 
-    public void payStaff() { // TODO: Pay the different employees based on their bill amounts
-        System.out.println("PAYMENTS:");
-        System.out.println(eventMgrAlloc);
+    public void payStaff() { // Pay the different employees based on their bill amounts
+        //Using dummy values for staff bill amounts!
+        float eventMgrBill = 300;
+        float logistMgrBill = 200;
+        float catererBill = 400;
+        
+        if (eventMgrBill == 0.0f | logistMgrBill == 0.0f | catererBill == 0.0f) {
+            System.out.println("Error: One or more employees have not submitted their bills");
+        }
+        else {
+            System.out.println("PAYMENTS:");
+            System.out.println("Event Manager: " + eventMgrBill);
+            System.out.println("Logistics Manager: " + logistMgrBill);
+            System.out.println("Caterer: " + catererBill);
+            System.out.println("Remaining Profits: " + (costplan.viewAmount() - catererBill - logistMgrBill - eventMgrBill));
+        }
     }
 
     public CostPlan getCostPlan() { // This is so we can get the cost plan object to other classes, eg main
         return costplan;
     }
 
-    private void printConfirm() {
-        
-    }
 }

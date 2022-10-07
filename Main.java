@@ -80,11 +80,11 @@ public class Main {
         
         if (userName.equals("eventManager")  && password.equals("admin123")) { // If the manager is an eventmanager
             // Creating new eventManager object and logging it in
-            EventManager manager1 = new EventManager(userInp, userName, password, "Event Manager");
-            manager1.logIn(userName, password);
+            EventManager eventmanager = new EventManager(userInp, userName, password, "Event Manager");
+            eventmanager.logIn(userName, password);
 
             System.out.printf("\nWelcome " + userName + ". Your options are: \n");
-            manager1.getOptions(); // Call eventmanager class getoptions() method to display the things it can do
+            eventmanager.getOptions(); // Call eventmanager class getoptions() method to display the things it can do
             String userSelect = scnr.nextLine();
             System.out.println();
             
@@ -95,7 +95,7 @@ public class Main {
                 query1.getQuery();
             }
             else if (userSelect.equals("4")) { // Logs the manager out if that option is selected
-                manager1.logOut();
+                eventmanager.logOut();
             }
         }
 
