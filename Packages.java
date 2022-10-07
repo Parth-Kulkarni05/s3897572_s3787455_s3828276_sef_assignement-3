@@ -33,9 +33,9 @@ public class Packages {
 
         System.out.println("Please pick your Package Option");
         
-        int packageChoice = chosePackage.nextInt();
+        String packageChoice_ = chosePackage.nextLine();
 
-        chosePackage.close();
+        int packageChoice = Integer.parseInt(packageChoice_);
 
         if (packageChoice == 1){
 

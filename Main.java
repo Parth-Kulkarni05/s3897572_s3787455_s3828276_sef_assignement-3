@@ -30,11 +30,15 @@ public class Main {
             String eventID = scnr.nextLine();
         }
 
-        scnr.close();
+        else if (userInp.equals("1")){
+            potentialCustomerBookingProcess();
+
+        }
+
     }   
 
 
-    public static void managerLogin(String userInp) { //This method is called to handle event manager logins
+    public static void managerLogin(String userInp){ //This method is called to handle event manager logins
         // Getting user input
         Scanner scnr = new Scanner(System.in);
         System.out.print("Enter Username: ");
@@ -69,8 +73,11 @@ public class Main {
             }
 
         }
+    }
+    
 
-        else if (userInp.equals("view packages")){
+
+    public static void potentialCustomerBookingProcess() throws ParseException{
 
             Packages package1 = new Packages(); // No constructor in there as of now 
             
@@ -79,26 +86,21 @@ public class Main {
             HashMap<String, String> packageInfo = package1.setPackage();
 
 
+
+
             Venue venue = new Venue(packageInfo.get("name"), Float.parseFloat(packageInfo.get("priceRange")), Integer.parseInt(packageInfo.get("maxNumberofGuests")));
 
             venue.displayVenues(Integer.parseInt(packageInfo.get("choice")));
 
             venue.setVenue();
 
-            venue.bookVenue(0, null)
-
             
 
-
-
-
-
-
-
-        }
-
-        scnr.close();
     }
-    
-}
+
+
+    }
+
+
+        
 
