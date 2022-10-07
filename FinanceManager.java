@@ -4,10 +4,12 @@ import java.util.Scanner;
 
 public class FinanceManager extends Employee {
     private CostPlan costplan = new CostPlan(); // create global costplan variable, so all methods can access it
+    Packages packages = new Packages(); // creates package object, which finance manager can then update
 
     FinanceManager(String employeeId, String username, String password, String position) {
         super(employeeId, username, password, position);
     }
+
 
     public void getOptions() { // Allow finance manager to select what to do
         Scanner scnr = new Scanner(System.in);
@@ -49,12 +51,28 @@ public class FinanceManager extends Employee {
             System.out.print("Operation Complete. Select next action (0 = EXIT, 1 = SHOW ALL OPTIONS AGAIN): ");
             userOption = scnr.nextLine();
         }
-        
-        scnr.close();
     }
 
-    private void updatePackage() { // TODO: Update package, get Parth to implement package.update()
-        ;
+    private void updatePackage() { // Update packages. Note finance manager can only update the price, as per stakeholder requirements
+        Scanner scnr = new Scanner(System.in);
+
+        System.out.println("Current packages are: ");
+        packages.displayPackages();                                         // Package object is created when finance manager is initialized, as per class diagram (package doesn't exist without finance mgr)
+        System.out.print("Select package to update (1, 2 or 3): ");
+        String packageSel = scnr.nextLine();
+
+        System.out.print("\nEnter new package price: ");
+        int pPrice = scnr.nextInt();
+
+        if (packageSel.equals("1")) {
+            packages.updatePackage1(pPrice);
+        }
+        else if (packageSel.equals("2")) {
+            packages.updatePackage1(pPrice);
+        }
+        else if (packageSel.equals("3")) {
+            packages.updatePackage1(pPrice);
+        }
     }
 
     private void createCostPlan() { // Enter cost plan details and fill in cost plan object
@@ -115,6 +133,10 @@ public class FinanceManager extends Employee {
 
     public CostPlan getCostPlan() { // This is so we can get the cost plan object to other classes, eg main
         return costplan;
+    }
+
+    public Packages getPackages() {
+        return packages;
     }
 
 }
