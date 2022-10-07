@@ -25,7 +25,7 @@ public class Event {
         // for compusory services (venue, food)
         // DARIO! PUT YOUR VENUE OBJECT IN ALL CONSTRUCTORS 
     Event(String eventId, Date eventDateTime, 
-        int numberOfGuest, FoodMenu foodMenu){  
+        int numberOfGuest, Venue venue, FoodMenu foodMenu){
         // set the date time, event id, foodmenu, 
         setDateTime(eventDateTime);
         setEventId(eventId);
@@ -39,7 +39,7 @@ public class Event {
 
         // optional service - music band
     Event(String eventId, Date eventDateTime, 
-        int numberOfGuest, FoodMenu foodMenu, Music music ){
+        int numberOfGuest, Venue venue, FoodMenu foodMenu, Music music ){
         // set the date time, event id, foodmenu,music
         setDateTime(eventDateTime);
         setEventId(eventId);
@@ -53,7 +53,7 @@ public class Event {
 
         // optional service flower decoration
     Event(String eventId, Date eventDateTime, int numberOfGuest,
-            FoodMenu foodMenu, FlowerDecoration flower ){
+        Venue venue, FoodMenu foodMenu, FlowerDecoration flower ){
                 
             // set the date time, event id, foodmenu, flower
         setDateTime(eventDateTime);
@@ -67,8 +67,8 @@ public class Event {
     }
 
         // optional service flower decoration and music band
-    Event(String eventId, Date eventDateTime, int numberOfGuest, FoodMenu foodMenu,
-             Music music, FlowerDecoration flower ){
+    Event(String eventId, Date eventDateTime, int numberOfGuest,
+        Venue venue, FoodMenu foodMenu, Music music, FlowerDecoration flower ){
 
         // set the date time, event id, foodmenu,music, flower
         setDateTime(eventDateTime);
@@ -83,7 +83,7 @@ public class Event {
     }
 
     // ---------------------------------------------------------------------------------------------
-
+=
     //method
 
     // use when changin costplan 
