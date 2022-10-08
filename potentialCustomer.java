@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class potentialCustomer {
 
-    public Query makeQuery() {
+    public Query makeQuery() { // Potential customer makes a query
         Scanner scnr = new Scanner(System.in);
         
         System.out.println("Enter your name: ");
@@ -14,7 +14,7 @@ public class potentialCustomer {
         System.out.println("Enter your query: ");
         String query = scnr.nextLine();
 
-        Query pC_query = new Query(name, phone, email, query);
+        Query pC_query = new Query(name, phone, email, query); // Make query object from input, then return this
         return pC_query;
     }
 

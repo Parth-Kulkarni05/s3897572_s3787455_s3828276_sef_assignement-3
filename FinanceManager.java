@@ -23,7 +23,7 @@ public class FinanceManager extends Employee {
             + "4. View Cost Plan\n"
             + "5. Allocate Money\n"
             + "6. Pay Staff\n"
-            + "7. Exit\n"
+            + "7. Log Out\n"
             + "Select option: "
             );
             userOption = scnr.nextLine();
@@ -48,7 +48,7 @@ public class FinanceManager extends Employee {
                 payStaff();
             }
 
-            System.out.print("Operation Complete. Select next action (0 = EXIT, 1 = SHOW FINANCE MANAGER OPTIONS AGAIN): ");
+            System.out.print("Operation Complete. Select next action (0 = LOG OUT, 1 = SHOW FINANCE MANAGER OPTIONS AGAIN): ");
             userOption = scnr.nextLine();
         }
     }
