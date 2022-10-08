@@ -68,10 +68,10 @@ public class FinanceManager extends Employee {
             packages.updatePackage1(pPrice);
         }
         else if (packageSel.equals("2")) {
-            packages.updatePackage1(pPrice);
+            packages.updatePackage2(pPrice);
         }
         else if (packageSel.equals("3")) {
-            packages.updatePackage1(pPrice);
+            packages.updatePackage3(pPrice);
         }
     }
 

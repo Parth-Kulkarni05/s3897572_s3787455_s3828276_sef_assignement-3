@@ -39,7 +39,7 @@ abstract class Employee {
     // employee login
     public  void logIn(String username, String password) {
         // account validation
-        if (username == getUsername() && password == getPassword()){          
+        if (username.equals(getUsername()) && password.equals(getPassword())){          
             setLoginStatus(true);
             System.out.println("log in successfully");        
         }

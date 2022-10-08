@@ -27,6 +27,16 @@ public class EventManager extends Employee{
                 if (userSelect.equals("1")) { // View customer query
                     // This is the actual query made by the potential customer
                     query.getQuery();
+
+                    System.out.print("Select an action (0 = CLOSE QUERY, 1 = RESPOND TO QUERY): ");
+                    userSelect = scnr.nextLine();
+
+                    if (userSelect.equals("1")) {
+                        System.out.println("Enter response: ");
+                        userSelect = scnr.nextLine();
+                        query.setResponse(userSelect);
+
+                    }
                 }
                 else if (userSelect.equals("2")) { // View customer complaint
                     query.getQuery();
@@ -41,15 +51,9 @@ public class EventManager extends Employee{
                     this.logOut();
                     break;
                 }
-                System.out.print("Operation Complete. Select next action (0 = LOG OUT, 1 = SHOW EVENT MANAGER OPTIONS AGAIN, 2 = RESPOND TO QUERY): ");
+                System.out.print("Operation Complete. Select next action (0 = LOG OUT, 1 = SHOW EVENT MANAGER OPTIONS AGAIN: ");
                 userSelect = scnr.nextLine();
 
-                if (userSelect.equals("2")) {
-                    System.out.println("Enter response: ");
-                    userSelect = scnr.nextLine();
-                    query.setResponse(userSelect);
-
-                }
             }
     }
 
