@@ -25,7 +25,7 @@ public class Main {
 
         // First, we need to init some dummy objects, since they aren't being returned correctly from their respective classes
         Venue dummyVenue = new Venue("DummyVenue", 1000, 80); // Dummy venue object
-        Event dummyEvent = new Event("dummyEvent124", null, 32, dummyVenue, regMenu); // Since the eventobject created after customer payment is not returned, we are using a dummy event
+        Event dummyEvent = new Event("dummyEvent124", null, 32, dummyVenue, regMenu, null, null); // Since the eventobject created after customer payment is not returned, we are using a dummy event
 
         // ----------------- Get base user selections, loop until user selects exit ----------------- \\
         String userInp = "";
@@ -166,7 +166,7 @@ public class Main {
 
             // Food Menu has already been initalised above. 
 
-            if (response.equals("yes")){ // TODO: Add optional service selection options
+            if (response.equals("yes")){
 
                 Music music = new Music("Mexican Band", 200.00f);
 
@@ -185,20 +185,18 @@ public class Main {
                 Event event = new Event("1234", "5/10/2022", 65, venue, regMenu, music, flowerDecoration);
 
             }
+            else {
+                amount = amount + 1000;
 
-            amount = amount + 1000;
-
-            Payment payment = new Payment();
-
-            payment.getDetails(amount);
-
-            payment.issueInvoice();
-  
-            Event event = new Event("1234", "5/10/2022", 65, venue, regMenu, null , null);
-
-
-
-
+                Payment payment = new Payment();
+    
+                payment.getDetails(amount);
+    
+                payment.issueInvoice();
+      
+                Event event = new Event("1234", "5/10/2022", 65, venue, regMenu, null , null);
             }
+
+        }
 
     }
