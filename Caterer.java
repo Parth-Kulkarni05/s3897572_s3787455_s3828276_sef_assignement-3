@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Caterer extends Employee {
     // field
@@ -92,4 +93,81 @@ public class Caterer extends Employee {
         return this.currentFoodMenu;
     }
     
+    
+    public void getOptions(Event dummyEvent) {
+        Scanner scnr = new Scanner(System.in);
+        String userSelect = "";
+    
+        System.out.printf("\nWelcome " + this.getUsername() + ". Your options are: \n");
+        while (!userSelect.equals("4") && !userSelect.equals("0")) { // If input is 4 (main exit) or 0 (exit after operation complete), stop while loop
+            System.out.printf(
+                "1. Order Food Menu\n"
+                + "2. Add Food Menu\n"
+                + "3. Change Food Menu\n"
+                + "4. Update Drink Order\n"
+                + "5. Update Cutlery\n"
+                + "6. Log Out\n"
+                + "Select option: "
+                );
+                userSelect = scnr.nextLine();
+                
+                if (userSelect.equals("1")) { // Order Food Menu
+                    System.out.println("Enter number of drinks: ");
+                    int drinks = Integer.parseInt(scnr.nextLine());
+
+                    System.out.println("Enter number of cutlery: ");
+                    int cutlery = Integer.parseInt(scnr.nextLine());
+                    
+                    System.out.println("Enter bill amount: ");
+                    float bill = Float.parseFloat(scnr.nextLine());
+
+                    orderFoodMenu(dummyEvent, drinks, cutlery, bill);
+                }
+                else if (userSelect.equals("2")) { // Add Food Menu
+                    System.out.println("Enter new food name: ");
+                    String foodName = scnr.nextLine();
+
+                    System.out.println("Enter new food cost: ");
+                    float cost = Float.parseFloat(scnr.nextLine());
+                    
+                    System.out.println("Enter bill amount: ");
+                    float bill = Float.parseFloat(scnr.nextLine());
+
+                    addFoodMenu(dummyEvent, foodName, bill, cost);
+                }
+                else if (userSelect.equals("3")) { // Change Food Menu
+                    System.out.println("Enter new food name: ");
+                    String foodName = scnr.nextLine();
+
+                    System.out.println("Enter integer position of old food item: ");
+                    int oldFood = Integer.parseInt(scnr.nextLine());
+
+                    System.out.println("Enter new food cost: ");
+                    float cost = Float.parseFloat(scnr.nextLine());
+                    
+                    System.out.println("Enter bill amount: ");
+                    float bill = Float.parseFloat(scnr.nextLine());
+
+                    changeFoodMenu(dummyEvent, foodName, oldFood, bill, cost);
+                }
+                else if (userSelect.equals("4")) { // Update Drink Amount
+                    System.out.println("Enter new Drink amount: ");
+                    int drink = Integer.parseInt(scnr.nextLine());
+
+                    updatedDinkOrder(drink, dummyEvent);
+                }
+                else if (userSelect.equals("5")) { // Update Cutlery Amount
+                    System.out.println("Enter new Cutlery amount: ");
+                    int cutlery = Integer.parseInt(scnr.nextLine());
+
+                    updatedCutlery(cutlery, dummyEvent);
+                }
+                else if (userSelect.equals("6")) { // Log the manager out and exit
+                    this.logOut();
+                    break;
+                }
+                System.out.print("Operation Complete. Select next action (0 = LOG OUT, 1 = SHOW CATERER OPTIONS AGAIN): ");
+                userSelect = scnr.nextLine();
+        }
+    }
 }

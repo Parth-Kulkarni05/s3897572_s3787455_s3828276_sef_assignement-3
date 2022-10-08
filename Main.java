@@ -25,7 +25,9 @@ public class Main {
 
         // First, we need to init some dummy objects, since they aren't being returned correctly from their respective classes
         Venue dummyVenue = new Venue("DummyVenue", 1000, 80); // Dummy venue object
-        Event dummyEvent = new Event("dummyEvent124", null, 32, dummyVenue, regMenu, null, null); // Since the eventobject created after customer payment is not returned, we are using a dummy event
+        Music dummyMusic = new Music("Rock band", 300);
+        FlowerDecoration dummyFDecoration = new FlowerDecoration("Colourful Flowers", 140, "Pickup");
+        Event dummyEvent = new Event("dummyEvent124", null, 32, dummyVenue, regMenu, dummyMusic, dummyFDecoration); // Since the eventobject created after customer payment is not returned, we are using a dummy event
 
         // ----------------- Get base user selections, loop until user selects exit ----------------- \\
         String userInp = "";
@@ -121,13 +123,18 @@ public class Main {
         }
         else if (userName.equals("financeManager")  && password.equals("admin123")) { // Finance Manager section
             System.out.printf("\nWelcome " + userName + ". Your options are: \n");
+            financeMgr.logIn(userName, password);
             financeMgr.getOptions();
         }
         else if (userName.equals("logisticManager")  && password.equals("admin123")) {
-            
+            LogisticManager lManager = new LogisticManager(userInp, userName, password, "Logistic Manager");
+            lManager.logIn(userName, password);
+            lManager.getOptions(dummyEvent);
         }
         else if (userName.equals("caterer")  && password.equals("admin123")) {
-
+            Caterer caterer = new Caterer(userInp, userName, password, "Caterer");
+            caterer.logIn(userName, password);
+            caterer.getOptions(dummyEvent);
         }
     }
     

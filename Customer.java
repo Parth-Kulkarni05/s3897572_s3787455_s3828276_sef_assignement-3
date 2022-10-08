@@ -15,7 +15,7 @@ public class Customer extends potentialCustomer {
         System.out.println("Enter your query: ");
         String query = scnr.nextLine();
 
-        Query pC_query = new Query(name, eventID, query); // Make query object from input, then return this
+        Query pC_query = new Query(eventID, name , query); // Make query object from input, then return this
         return pC_query;
     }
 

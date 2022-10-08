@@ -41,8 +41,15 @@ public class EventManager extends Employee{
                     this.logOut();
                     break;
                 }
-                System.out.print("Operation Complete. Select next action (0 = LOG OUT, 1 = SHOW EVENT MANAGER OPTIONS AGAIN): ");
+                System.out.print("Operation Complete. Select next action (0 = LOG OUT, 1 = SHOW EVENT MANAGER OPTIONS AGAIN, 2 = RESPOND TO QUERY): ");
                 userSelect = scnr.nextLine();
+
+                if (userSelect.equals("2")) {
+                    System.out.println("Enter response: ");
+                    userSelect = scnr.nextLine();
+                    query.setResponse(userSelect);
+
+                }
             }
     }
 
