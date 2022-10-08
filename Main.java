@@ -1,3 +1,4 @@
+import java.sql.Date;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,15 +11,15 @@ public class Main {
         // ----------------- Initialize relevant class objects ----------------- \\
         FinanceManager financeMgr = new FinanceManager("default", "financeManager", "admin123", "Finance Manager"); // Creates finance manager object, so we can then also get the package object from it, since it's the one creating it
         Query query = new Query(null, 0, null, null);
-        // Menu
+
+
         ArrayList<String> menu = new ArrayList<String>();
         menu.add("beef stew");
         menu.add("pancakes");
         menu.add("ice cream");
+
         FoodMenu regMenu = new FoodMenu("regular", menu , 200);
 
-        menu.set(0, "Vegetable Stew");
-        FoodMenu vegMenu = new FoodMenu("vegetarian", null, 150);
 
         // ----------------- Get base user selections, loop until user selects exit ----------------- \\
         String userInp = "";
@@ -40,7 +41,7 @@ public class Main {
 
         // ----------------- Check which option selected, call relevant class  ----------------- \\
             if (userInp.equals("1")){ // Making a booking
-                potentialCustomerBookingProcess(financeMgr);
+                potentialCustomerBookingProcess(financeMgr, regMenu);
             }
             else if (userInp.equals("2")) { // Potential customer make query
                 potentialCustomer p_customer = new potentialCustomer();
@@ -96,13 +97,15 @@ public class Main {
         
         }
         else if (userName.equals("caterer")  && password.equals("admin123")) {
+
+
             
         }
     }
     
 
 
-    public static void potentialCustomerBookingProcess(FinanceManager financeMgr) throws ParseException{
+    public static void potentialCustomerBookingProcess(FinanceManager financeMgr, FoodMenu regMenu) throws ParseException{
 
            Scanner scnr = new Scanner(System.in);
 
@@ -114,6 +117,12 @@ public class Main {
 
             HashMap<String, String> packageInfo = package1.setPackage();
 
+            // Passing information from package to venue... 
+
+            // But not able to retrieve that information from venue.... 
+
+            // unless we make getter methods within venue, but then event expects the constructor....
+
 
             Venue venue = new Venue(packageInfo.get("name"), Float.parseFloat(packageInfo.get("priceRange")), Integer.parseInt(packageInfo.get("maxNumberofGuests")));
 
@@ -122,10 +131,12 @@ public class Main {
             venue.setVenue();
 
 
+
             System.out.println("Do you want to Add Optional Services To The Order? Type yes or no");
 
             String response = scnr.nextLine();
 
+            // Food Menu has already been initalised above. 
 
             if (response.equals("yes")){
 
@@ -135,25 +146,34 @@ public class Main {
 
                 amount = amount + 200 + 500;
 
+                amount = amount + 1000;
+
+                Payment payment = new Payment();
+
+                payment.getDetails(amount);
+
+                payment.issueInvoice();
+
+                Event event = new Event("1234", "5/10/2022", 65, venue, regMenu, music, flowerDecoration);
 
             }
 
             amount = amount + 1000;
-
 
             Payment payment = new Payment();
 
             payment.getDetails(amount);
 
             payment.issueInvoice();
+  
+            Event event = new Event("1234", "5/10/2022", 65, venue, regMenu, null , null);
 
 
-          //  Event event = new Event(response, null, amount, venue, null)
-
+            }
 
     }
 
-}
+
 
 
 

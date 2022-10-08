@@ -14,7 +14,7 @@ public class Event {
 
     // normal fields
     private String eventId;
-    private Date eventDateTime;
+    private String eventDateTime;
     private int numberOfGuest;
     private boolean isPaid = true;
     private float totalCost; // this one = sum(all service's costs  venue.cost + food.cost...)
@@ -22,54 +22,10 @@ public class Event {
     //------------------------------------------------------------------------------------------------------------
     
     // constructors
-        // for compusory services (venue, food)
-    Event(String eventId, Date eventDateTime, 
-        int numberOfGuest, Venue venue, FoodMenu foodMenu){
-        // set the date time, event id, foodmenu, 
-        setDateTime(eventDateTime);
-        setEventId(eventId);
-        setNumberOfGuest(numberOfGuest);
-        setFoodMenu( foodMenu);
 
-        // increament total cost here + venue ..
-        float totalCost = foodMenu.getCost();
-        setCost(totalCost);
-    }
 
-        // optional service - music band
-    Event(String eventId, Date eventDateTime, 
-        int numberOfGuest, Venue venue, FoodMenu foodMenu, Music music ){
-        // set the date time, event id, foodmenu,music
-        setDateTime(eventDateTime);
-        setEventId(eventId);
-        setNumberOfGuest(numberOfGuest);
-        setFoodMenu( foodMenu);
-        setMusic(music);
-        // increament total cost here + venue ..
-        float totalCost = foodMenu.getCost()+ music.getCost();
-        setCost(totalCost);
-    }
+    Event(String eventId, String eventDateTime, int numberOfGuest, Venue venue, FoodMenu foodMenu, Music music, FlowerDecoration flowerDecoration){
 
-        // optional service flower decoration
-    Event(String eventId, Date eventDateTime, int numberOfGuest,
-        Venue venue, FoodMenu foodMenu, FlowerDecoration flower ){
-                
-            // set the date time, event id, foodmenu, flower
-        setDateTime(eventDateTime);
-        setEventId(eventId);
-        setNumberOfGuest(numberOfGuest);
-        setFoodMenu( foodMenu);
-        setFlowerDecoration(flower);
-          // increament total cost here + venue ..
-        float totalCost = foodMenu.getCost()+ flower.getCost();
-        setCost(totalCost);
-    }
-
-        // optional service flower decoration and music band
-    Event(String eventId, Date eventDateTime, int numberOfGuest,
-        Venue venue, FoodMenu foodMenu, Music music, FlowerDecoration flower ){
-
-        // set the date time, event id, foodmenu,music, flower
         setDateTime(eventDateTime);
         setEventId(eventId);
         setNumberOfGuest(numberOfGuest);
@@ -77,7 +33,7 @@ public class Event {
         setFlowerDecoration(flower);
         setMusic(music);
           // increament total cost here + venue ..
-        float totalCost = foodMenu.getCost()+ music.getCost()+ flower.getCost();
+        float totalCost = foodMenu.getCost()+ music.getCost()+ flower.getCost() + venue.getCost();
         setCost(totalCost);
     }
 
@@ -142,10 +98,10 @@ public class Event {
         return this.eventId;
     }  
 
-    public void setDateTime(Date dateTime){
+    public void setDateTime(String dateTime){
         this.eventDateTime = dateTime;
     }
-    public Date getDateTime(){
+    public String getDateTime(){
         return this.eventDateTime;
     }
 

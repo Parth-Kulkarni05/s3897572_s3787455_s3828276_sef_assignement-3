@@ -89,15 +89,28 @@ public class Venue {
         this.date_venue = str_date; // Make this into a Date Object
 
         this.isBooked = true;
-        
+
     }
-    
-    // methods
-    public float bookVenue(int numberOfGuest, String date) {
-        this.numberOfGuest = numberOfGuest;
-        this.date_venue = date;
-        this.isBooked = true;
-        return this.cost; //return the cost for the event manager to see???
+
+    public String getName(){
+        return this.name;
     }
+
+    public String getVenueDate(){
+        return this.date_venue;
+    }
+
+    public boolean getBookedStatus(){
+        return this.isBooked;
+    }
+
+    public float getCost(){
+        return this.cost;
+    }
+
+    public int getNumberOfGuest(){
+        return this.numberOfGuest;
+    }
+
 }
 
