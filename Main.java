@@ -1,3 +1,4 @@
+import java.sql.Date;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,14 +19,13 @@ public class Main {
         menu.add("beef stew");
         menu.add("pancakes");
         menu.add("ice cream");
+
         FoodMenu regMenu = new FoodMenu("regular", menu , 200);
 
-        menu.set(0, "Vegetable Stew");
-        FoodMenu vegMenu = new FoodMenu("vegetarian", null, 150);
 
         // First, we need to init some dummy objects, since they aren't being returned correctly from their respective classes
         Venue dummyVenue = new Venue("DummyVenue", 1000, 80); // Dummy venue object
-        Event dummyEvent = new Event("dummyEvent124", null, 32, dummyVenue, vegMenu); // Since the eventobject created after customer payment is not returned, we are using a dummy event
+        Event dummyEvent = new Event("dummyEvent124", null, 32, dummyVenue, regMenu); // Since the eventobject created after customer payment is not returned, we are using a dummy event
 
         // ----------------- Get base user selections, loop until user selects exit ----------------- \\
         String userInp = "";
@@ -47,7 +47,7 @@ public class Main {
 
         // ----------------- Check which option selected, call relevant class  ----------------- \\
             if (userInp.equals("1")){ // Making a booking
-                potentialCustomerBookingProcess(financeMgr);
+                potentialCustomerBookingProcess(financeMgr, regMenu);
             }
             else if (userInp.equals("2")) { // Potential customer make query
                 potentialCustomer p_customer = new potentialCustomer();
@@ -87,7 +87,7 @@ public class Main {
                     }
             }
             else if (userInp.equals("5")) { // Manager login
-                managerLogin(userInp, financeMgr, query, vegMenu, dummyVenue, dummyEvent);
+                managerLogin(userInp, financeMgr, query, regMenu, dummyVenue, dummyEvent);
             }
             else if (userInp.equals("6")){ // Exit
                break;
@@ -133,7 +133,7 @@ public class Main {
     
 
 
-    public static void potentialCustomerBookingProcess(FinanceManager financeMgr) throws ParseException{
+    public static void potentialCustomerBookingProcess(FinanceManager financeMgr, FoodMenu regMenu) throws ParseException{
 
            Scanner scnr = new Scanner(System.in);
 
@@ -145,6 +145,12 @@ public class Main {
 
             HashMap<String, String> packageInfo = package1.setPackage();
 
+            // Passing information from package to venue... 
+
+            // But not able to retrieve that information from venue.... 
+
+            // unless we make getter methods within venue, but then event expects the constructor....
+
 
             Venue venue = new Venue(packageInfo.get("name"), Float.parseFloat(packageInfo.get("priceRange")), Integer.parseInt(packageInfo.get("maxNumberofGuests")));
 
@@ -153,10 +159,12 @@ public class Main {
             venue.setVenue();
 
 
+
             System.out.println("Do you want to Add Optional Services To The Order? Type yes or no");
 
             String response = scnr.nextLine();
 
+            // Food Menu has already been initalised above. 
 
             if (response.equals("yes")){ // TODO: Add optional service selection options
 
@@ -166,20 +174,31 @@ public class Main {
 
                 amount = amount + 200 + 500;
 
+                amount = amount + 1000;
+
+                Payment payment = new Payment();
+
+                payment.getDetails(amount);
+
+                payment.issueInvoice();
+
+                Event event = new Event("1234", "5/10/2022", 65, venue, regMenu, music, flowerDecoration);
 
             }
 
             amount = amount + 1000;
-
 
             Payment payment = new Payment();
 
             payment.getDetails(amount);
 
             payment.issueInvoice();
+  
+            Event event = new Event("1234", "5/10/2022", 65, venue, regMenu, null , null);
 
 
-          //  Event event = new Event(response, null, amount, venue, null)
+
+
+            }
 
     }
-}
