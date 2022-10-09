@@ -1,3 +1,8 @@
+// EXPLANATION OF CLASS AND SEQUENCE DIAGRAM IMPLEMENTATION:
+    // Extends employee as specified in class diagram.
+    // Receives venue, event and query as input when needed.
+    // As specified in 'event mgr final venue booking' sequence diagram, the class first receives the event object, then to confirm booking it calls 'venue.BookVenue' (~ line 80). 
+
 import java.util.Scanner;
 
 public class EventManager extends Employee{
@@ -6,6 +11,7 @@ public class EventManager extends Employee{
         super(employeeId, username, password, position);
     }
 
+    //Methods
     public void getOptions(Query query,  String userName, Event event, Venue venue) {
         Scanner scnr = new Scanner(System.in);
         String userSelect = "";
@@ -57,15 +63,15 @@ public class EventManager extends Employee{
             }
     }
 
-    public void viewQuery(Query queryobj) {
+    public void viewQuery(Query queryobj) { // View customer query
         queryobj.getQuery();
     }
 
-    public void viewComplaint(Query queryobj) {
+    public void viewComplaint(Query queryobj) { // View customer complaint
         queryobj.getQuery();
     }
 
-    public void confirmVenue(Venue venue, Event event) {
+    public void confirmVenue(Venue venue, Event event) { // Confirm venue booking, as seen in sequence diagram
         Scanner scnr = new Scanner(System.in);
         System.out.print("Please confirm the number of guests: ");
         String numGuests = scnr.nextLine();
@@ -74,7 +80,7 @@ public class EventManager extends Employee{
         venue.bookVenue(Integer.parseInt(numGuests), bookDate);
     }
 
-    public void modifyEvent(Event event) {
+    public void modifyEvent(Event event) { // Modify event details
         Scanner scnr = new Scanner(System.in);
         System.out.println("What would you like to modify? ");
         System.out.print(
@@ -92,7 +98,7 @@ public class EventManager extends Employee{
             if (userSelect.equals("1")) {
                 System.out.print("Enter new price: ");
                 userSelect = scnr.nextLine();
-                event.changeAmount(Float.parseFloat(userSelect));
+                event.changeAmount(Float.parseFloat(userSelect)); // Change event price
             } else {
                 // Out of project scope to implement, first option demonstrates how it works for each.
             }

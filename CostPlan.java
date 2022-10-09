@@ -1,23 +1,22 @@
-// ALL IMPLEMENTED PARTS ARE WORKING, PLEASE DO NOT MODIFY
-
 public class CostPlan {
+    // create variables
     private String costPlanID;
     private float amount;
     private float eventmgrFunds;
     private float logisticmgrFunds;
     private float catererFunds;
 
-
-    public void createCostPlan(String costPlanID, float amount) {
+    // Methods
+    public void createCostPlan(String costPlanID, float amount) { // Create/initialize cost plan
         this.costPlanID = costPlanID;
         this.amount = amount;
     }
 
-    public void updateCostPlan(float newAmount) {
+    public void updateCostPlan(float newAmount) { // Set new cost plan amount
         this.amount = newAmount;
     }
 
-    public void viewCostPlan() {
+    public void viewCostPlan() { // Print this cost plan
         System.out.println("ID: " + this.costPlanID + "\nAmount: " + this.amount);
     }
 

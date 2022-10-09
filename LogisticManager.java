@@ -1,10 +1,13 @@
+// EXPLANATION OF CLASS AND SEQUENCE DIAGRAM IMPLEMENTATION:
+    // Extends employee. Gets the optional services objects from the event object (eg music @ line ~29).
+    // As specified in 'Logistic Manager completes optional services' sequence diagram, gets passed the desired event object 
+    // then calls methods within the optional services class, (eg 'this.currentOptionalServiceName = music.getServiceName()' @ line ~30)
+
 import java.util.Scanner;
 public class LogisticManager extends Employee{
     // field
-    
     private String currentOptionalServiceName ;
     
-
     // constructor
     LogisticManager(String employeeId, String username, 
                        String password, String position) {

@@ -1,7 +1,8 @@
 // EXPLANATION OF CLASS AND SEQUENCE DIAGRAM IMPLEMENTATION:
     // As per class diagram, caterer is a child of employee
-    // Caterer can then access the food menu using the methods shown in the class diagram
-    
+    // Caterer can then access the food menus using the methods shown in the class diagram
+    // As shown in the 'caterer arrange sequence diagram', the caterer receives an event object, then calls the relevant methods
+    // in the Food Menu class to achieve his requirements
 
 import java.util.ArrayList;
 import java.util.Scanner;
