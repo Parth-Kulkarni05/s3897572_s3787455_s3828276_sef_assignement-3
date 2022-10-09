@@ -80,7 +80,7 @@ public class Venue {
 
     }
 
-    public void setVenue() throws ParseException{
+    public void setVenue(){
 
         Scanner userInput = new Scanner(System.in);
 
