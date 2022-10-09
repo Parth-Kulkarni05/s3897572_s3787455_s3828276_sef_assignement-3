@@ -35,10 +35,9 @@ public class Main {
         while (!userInp.equals("6") && !userInp.equals("0")) {
             System.out.println("\n\nWelcome. Your options are:");
             System.out.print(
-            "0. Make a Physical Venue Inspection\n" +
             "1. Make Booking\n"
             + "2. Make query\n"
-            + "3. Venue inspection\n"
+            + "3. Make a Physical Venue Inspection\n"
             + "4. Login with eventID\n"
             + "5. Manager login\n"
             + "6. Exit\n"
@@ -49,21 +48,6 @@ public class Main {
             System.out.println();
 
         // ----------------- Check which option selected, call relevant class  ----------------- \\
-
-            if (userInp.equals("0")){
-
-                VenueInspection venueInspection = new VenueInspection();
-
-                venueInspection.getCustomerDetails();
-
-                venueInspection.bookDate();
-
-                venueInspection.bookTime();
-
-
-            }
-
-
             if (userInp.equals("1")){ // Making a booking
                 potentialCustomerBookingProcess(financeMgr, regMenu);
             }
@@ -72,8 +56,13 @@ public class Main {
                 query = p_customer.makeQuery();
             }
             else if (userInp.equals("3")) { // Venue inspection
-                System.out.println("Please enter venue name: ");
-                String venueName = scnr.nextLine();
+                VenueInspection venueInspection = new VenueInspection();
+
+                venueInspection.getCustomerDetails();
+
+                venueInspection.bookDate();
+
+                venueInspection.bookTime();
             }
             else if (userInp.equals("4")) {  // Login with eventID
                 System.out.println("Please enter your event id: ");
