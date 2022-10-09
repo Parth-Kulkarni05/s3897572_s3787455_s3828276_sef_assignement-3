@@ -35,9 +35,14 @@ public class Payment {
 
         this.paymentMethod = userInput.nextLine();
 
-        System.out.print("Payment Successful");
+        if (paymentMethod.equals("Card") || paymentMethod.equals("Debit")){
+            System.out.print("Payment Successful");
+            this.paidDate = new Date();
+        }
 
-        this.paidDate = new Date();
+        else{
+            System.out.println("Payment Unsuccessful");
+        }
        
     }
 
