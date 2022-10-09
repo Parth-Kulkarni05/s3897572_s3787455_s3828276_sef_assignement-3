@@ -1,3 +1,8 @@
+// EXPLANATION OF CLASS AND SEQUENCE DIAGRAM IMPLEMENTATION:
+    // As per class diagram, caterer is a child of employee
+    // Caterer can then access the food menu using the methods shown in the class diagram
+    
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
