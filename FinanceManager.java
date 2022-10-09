@@ -1,4 +1,8 @@
-// ALL IMPLEMENTED PARTS ARE WORKING, PLEASE DO NOT MODIFY
+// EXPLANATION OF CLASS AND SEQUENCE DIAGRAM IMPLEMENTATION:
+    // As per the class diagram, the finance manager class extends employee.
+    // It also creates a package object, which means that package cannot exist without finance manager, as seen on class diagram ('has a' Composition relationship)
+    // The finance manager also creates a cost plan object, which is then added to the event object later
+    // See line ~60 for sequence diagram implementation comments 
 
 import java.util.Scanner;
 
@@ -17,7 +21,7 @@ public class FinanceManager extends Employee {
 
         while (!userOption.equals("7") && !userOption.equals("0")) {
             System.out.printf(
-            "\n1. Update Package\n"
+            "\n1. Update Package Price\n"
             + "2. Create Cost Plan\n"
             + "3. Change Cost Plan\n"
             + "4. View Cost Plan\n"
@@ -53,7 +57,9 @@ public class FinanceManager extends Employee {
         }
     }
 
-    private void updatePackage() { // Update packages. Note finance manager can only update the price, as per stakeholder requirements
+    // Update package. First gets the current packages using 'packages.displayPackages', then calls the correspondng 'updatepackage' method in Package
+    // as per the sequence diagram
+    private void updatePackage() { // Note finance manager can only update the price, as per stakeholder requirements
         Scanner scnr = new Scanner(System.in);
 
         System.out.println("Current packages are: ");

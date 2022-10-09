@@ -1,3 +1,6 @@
+// EXPLANATION OF CLASS AND SEQUENCE DIAGRAM IMPLEMENTATION:
+    // Potential customer has a makeQuery method, which then creates a new query object as is represented on the class diagram.
+
 import java.util.Scanner; 
 
 public class potentialCustomer {
