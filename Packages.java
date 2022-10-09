@@ -38,6 +38,8 @@ public class Packages {
 
         Scanner chosePackage = new Scanner(System.in);
 
+        System.out.println("Would you like to view a virtual tour for any of the venues? Type yes or no (lowercase)");
+
         System.out.println("Please pick your Package Option");
         
         String packageChoice_ = chosePackage.nextLine();
