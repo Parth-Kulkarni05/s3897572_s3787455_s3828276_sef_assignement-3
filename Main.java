@@ -27,7 +27,7 @@ public class Main {
         Venue dummyVenue = new Venue("DummyVenue", 1000, 80); // Dummy venue object
         Music dummyMusic = new Music("Rock band", 300);
         FlowerDecoration dummyFDecoration = new FlowerDecoration("Colourful Flowers", 140, "Pickup");
-        Event dummyEvent = new Event("dummyEvent124", null, 32, dummyVenue, regMenu, dummyMusic, dummyFDecoration); // Since the eventobject created after customer payment is not returned, we are using a dummy event
+        Event dummyEvent = new Event("dummyEvent124", "11/10/2022", 32, dummyVenue, regMenu, dummyMusic, dummyFDecoration); // Since the eventobject created after customer payment is not returned, we are using a dummy event
 
         // ----------------- Get base user selections, loop until user selects exit ----------------- \\
         String userInp = "";
@@ -35,6 +35,7 @@ public class Main {
         while (!userInp.equals("6") && !userInp.equals("0")) {
             System.out.println("\n\nWelcome. Your options are:");
             System.out.print(
+            "0. Make a Physical Venue Inspection\n" +
             "1. Make Booking\n"
             + "2. Make query\n"
             + "3. Venue inspection\n"
@@ -48,6 +49,21 @@ public class Main {
             System.out.println();
 
         // ----------------- Check which option selected, call relevant class  ----------------- \\
+
+            if (userInp.equals("0")){
+
+                VenueInspection venueInspection = new VenueInspection();
+
+                venueInspection.getCustomerDetails();
+
+                venueInspection.bookDate();
+
+                venueInspection.bookTime();
+
+
+            }
+
+
             if (userInp.equals("1")){ // Making a booking
                 potentialCustomerBookingProcess(financeMgr, regMenu);
             }
@@ -82,6 +98,13 @@ public class Main {
                             query = customer.makeQuery();
                         } 
                         else if (userSelect.equals("4")) {
+
+                            String curr_date = "10/10/2022";
+
+                            Cancellation cancel = new Cancellation();
+
+                            cancel.cancel(dummyEvent.getCost(),curr_date, dummyEvent.getDateTime());
+
                             customer.eventCancel(dummyEvent);
                         }
                         System.out.print("Operation Complete. Select next action (0 = LOG OUT, 1 = SHOW CUSTOMER OPTIONS AGAIN): ");
@@ -189,7 +212,7 @@ public class Main {
 
                 payment.issueInvoice();
 
-                Event event = new Event("1234", "5/10/2022", 65, venue, regMenu, music, flowerDecoration);
+                Event event = new Event("1234", "5/10/2022", venue.getNumberOfGuest(), venue, regMenu, music, flowerDecoration);
 
             }
             else {
@@ -201,9 +224,13 @@ public class Main {
     
                 payment.issueInvoice();
       
-                Event event = new Event("1234", "5/10/2022", 65, venue, regMenu, null , null);
+                Event event = new Event("1234", "5/10/2022", venue.getNumberOfGuest(), venue, regMenu, null , null);
             }
 
         }
+    
+    
+
+
 
     }

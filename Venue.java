@@ -1,6 +1,4 @@
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Scanner;
 
 public class Venue {
@@ -21,6 +19,8 @@ public class Venue {
     }
 
     public void displayVenues(int PackageChoice){
+
+        Scanner scnr = new Scanner(System.in);
 
         System.out.print("We have the following Venues tailored to your Package Selection");
 
@@ -48,8 +48,37 @@ public class Venue {
         
         }
 
-    }
 
+        System.out.println("Do you want to view a virtual tour of above venues? Types yes or no (lowercase)");
+
+
+
+        
+        String virtualTourChoice = scnr.nextLine();
+
+        if (virtualTourChoice.equals("yes")){
+            VirtualTour virtual = new VirtualTour();
+
+            System.out.println("Enter the name of Venue for Virtual Tour Link..");
+
+            String venue_name_tour = scnr.nextLine();
+
+            virtual.viewVirtualTour(venue_name_tour);
+
+            System.out.println();
+
+            System.out.println("Do you want to continue with the booking process? Types yes or no (lowercase)");
+
+            String continue_booking = scnr.nextLine();
+
+            if (continue_booking.equals("no")){
+                System.out.println("Exiting Booking");
+                System.exit(0);
+            }
+
+        }
+
+    }
 
     public void setVenue() throws ParseException{
 
@@ -80,9 +109,9 @@ public class Venue {
 
         
 
-        System.out.print("The venue is available for the following dates:05-AUG-2022");
+        System.out.print("The venue is available for the following dates:05/11/2022");
 
-        System.out.println("Enter the date you want to commence event in exact formatting..(E.g: 30-October-10)");;
+        System.out.println("Enter the date you want to commence event in exact formatting..(E.g: 15/10/2022)");;
 
         String str_date = userInput.nextLine().strip();
 
