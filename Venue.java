@@ -112,5 +112,11 @@ public class Venue {
         return this.numberOfGuest;
     }
 
+    public float bookVenue(int numberOfGuest, String date) { // BookVenue method for eventManager to confirm booking
+        this.numberOfGuest = numberOfGuest;
+        this.date_venue = date;
+        this.isBooked = true;
+        return this.cost; //return the cost for the event manager to see
+    }
 }
 

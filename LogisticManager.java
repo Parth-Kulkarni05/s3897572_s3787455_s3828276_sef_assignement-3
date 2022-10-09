@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class LogisticManager extends Employee{
     // field
     
@@ -79,7 +80,43 @@ public class LogisticManager extends Employee{
     }
 
     // getter
+    public void getOptions(Event dummyEvent) {
+        Scanner scnr = new Scanner(System.in);
+        String userSelect = "";
     
-
+        System.out.printf("\nWelcome " + this.getUsername() + ". Your options are: \n");
+        while (!userSelect.equals("4") && !userSelect.equals("0")) { // If input is 4 (main exit) or 0 (exit after operation complete), stop while loop
+            System.out.printf(
+                "1. Hire Music\n"
+                + "2. Order Flower Decoration\n"
+                + "3. Cancel Service\n"
+                + "4. Log Out\n"
+                + "Select option: "
+                );
+                userSelect = scnr.nextLine();
+                
+                if (userSelect.equals("1")) { // Hire music
+                    System.out.println("Enter bill amount: ");
+                    userSelect = scnr.nextLine();
+                    hireMusic(dummyEvent, Float.parseFloat(userSelect));
+                }
+                else if (userSelect.equals("2")) { // Order required flower decoration
+                    System.out.println("Enter bill amount: ");
+                    userSelect = scnr.nextLine();
+                    orderFlowerDecoration(dummyEvent, Float.parseFloat(userSelect));
+                }
+                else if (userSelect.equals("3")) { // Cancel a service
+                    System.out.println("Enter name of service to cancel: ");
+                    userSelect = scnr.nextLine();
+                    cancel(dummyEvent, userSelect);
+                }
+                else if (userSelect.equals("4")) { // Log the manager out and exit
+                    this.logOut();
+                    break;
+                }
+                System.out.print("Operation Complete. Select next action (0 = LOG OUT, 1 = SHOW LOGISTIC MANAGER OPTIONS AGAIN): ");
+                userSelect = scnr.nextLine();
+        }
+    }
 
 }

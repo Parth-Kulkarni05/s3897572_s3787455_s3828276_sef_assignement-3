@@ -24,17 +24,39 @@ public class Event {
     // constructors
 
 
-    Event(String eventId, String eventDateTime, int numberOfGuest, Venue venue, FoodMenu foodMenu, Music music, FlowerDecoration flowerDecoration){
-
+    Event(String eventId, String eventDateTime, int numberOfGuest, Venue venue, FoodMenu foodMenu, Music music, FlowerDecoration flowerDecoration){     
         setDateTime(eventDateTime);
         setEventId(eventId);
         setNumberOfGuest(numberOfGuest);
         setFoodMenu( foodMenu);
-        setFlowerDecoration(flower);
-        setMusic(music);
-          // increament total cost here + venue ..
-        float totalCost = foodMenu.getCost()+ music.getCost()+ flower.getCost() + venue.getCost();
+        float totalCost;
+
+        if (flowerDecoration == null && music == null) {
+            // increament total cost here + venue ..
+            totalCost = foodMenu.getCost()+ venue.getCost();
+        }
+        else if (flowerDecoration == null) {
+            setMusic(music);
+
+            // increament total cost here + venue ..
+            totalCost = foodMenu.getCost()+ music.getCost() + venue.getCost();
+        }
+        else if (music == null) {
+            setFlowerDecoration(flowerDecoration);
+
+            // increament total cost here + venue ..
+            totalCost = foodMenu.getCost()+ flowerDecoration.getCost() + venue.getCost();
+        } 
+        else {
+            setMusic(music);
+            setFlowerDecoration(flowerDecoration);
+
+            // increament total cost here + venue ..
+            totalCost = foodMenu.getCost()+ music.getCost()+ flowerDecoration.getCost() + venue.getCost();
+        }
+
         setCost(totalCost);
+            
     }
 
     // ---------------------------------------------------------------------------------------------
